@@ -9,7 +9,8 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <title>@yield('title')</title>\
+
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -65,7 +66,7 @@
                 <li><a href="r{{ route('shop.shop-grid') }}">Loja</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="{{ route('shop.shopDetails') }}">Shop Details</a></li>
+                        <li><a href="#">Shop Details</a></li>
                         <li><a href="{{ route('shop.shoppingCart') }}">Shoping Cart</a></li>
                         <li><a href="{{ route('cart.checkout') }}">Check Out</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
@@ -143,7 +144,7 @@
                             <li class="active"><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="{{ route('shop.shopDetails') }}">Shop Details</a></li>
+                                    <li><a href="#">Shop Details</a></li>
                                     <li><a href="{{ route('shop.shoppingCart') }}">Shoping Cart</a></li>
                                     <li><a href="{{ route('cart.checkout') }}">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>

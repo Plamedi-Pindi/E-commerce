@@ -31,7 +31,7 @@ Route::get('Admindashboard', function(){
 
 Route::get('Admindashboard/cadastrarproduto', [ProdutoController::class, 'index'])->name('cadastrarProduto')->middleware('auth');
 
-Route::get('Admindashboard/cadastrarcategoria', [ProdutoController::class, 'cadastrarCategoria'])->name('cadastrarCategoria')->middleware('auth');
+Route::get('Admindashboard/cadastrarcategoria', [CategoriaController::class, 'index'])->name('cadastrarCategoria')->middleware('auth');
 
 // REGISTRAR PRODUTOS
 Route::post('produtos/', [ProdutoController::class, 'store']);
@@ -46,7 +46,7 @@ Route::group(['prefix' => 'compras', 'as' => 'shop.'], function(){
     Route::get('/carrinhodecompras', [SiteController::class, 'shoppingCart'])->name('shoppingCart');
 
     // SHOP DETAILS ROUTE
-    Route::get('/detalhesdacompra', [SiteController::class, 'shopdetail'])->name('shopDetails');
+    Route::get('/detalhesdacompra/{id}', [SiteController::class, 'shopDetail'])->name('shopDetails');
 
 });
 
@@ -55,12 +55,12 @@ Route::post('produtos/categoria', [CategoriaController::class, 'store']);
 
 Route::get('produto/categorias/{id}', [SiteController::class, 'categoria'])->name('Produto.categorias');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

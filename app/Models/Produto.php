@@ -12,8 +12,13 @@ class Produto extends Model
     protected $fillable = ['imagem'];
     use HasFactory;
 
-    public function caregoria(){
+    public function categoria(){
 
-        return $this->BelongsTo('App\Models\Categoria');
+        return $this->BelongsTo(Categoria::class, 'id_categoria');
+    }
+
+    public function user(){
+
+        return $this->BelongsTo(user::class, 'id_user');
     }
 }

@@ -15,10 +15,7 @@ class ProdutoController extends Controller
         return view('produtos.cadastrarProduto', ['produtos' => $produtos]);
     }
 
-    // Cadastrar Categoria
-    public function cadastrarCategoria(){
-        return view('produtos.cadastrarCategoria');
-    }
+
 
     public function store(Request $request){
         $produto = new Produto;

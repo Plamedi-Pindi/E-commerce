@@ -64,7 +64,7 @@
                                                     <span>91</span>
                                                 </td>
                                                 <td>
-                                                    <span>{{ $produto->id_categoria }}</span>
+                                                    <span>{{ $produto->categoria->nome}}</span>
                                                 </td>
 
                                                 <td>

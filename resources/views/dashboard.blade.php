@@ -1,6 +1,6 @@
 @extends('layouts.marge.dashMarge')
 
-@section('title', 'Admin-Dashboard')
+@section('title', 'AdminDashboard')
 
 @section('content')
 

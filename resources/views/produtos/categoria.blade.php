@@ -1,6 +1,6 @@
 @extends('layouts.marge.site2')
 
-@section('title', 'Fazer Compras')
+@section('title', 'Categoria')
 
 @section('content')
     <section class="product spad" style="">
@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-7">
                     <div class="section-title product__discount__title" style=" margin-top:-4rem; margin-bottom:2rem;">
-                        <h2>Categoria:</h2>
+                        <h2>Categoria: {{ $categoria->nome }}</h2>
                     </div>
 
                     <div class="row">

@@ -15,9 +15,12 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        return view('produtos.cadastrarCategoria');
     }
+    // Cadastrar Categoria
+    public function cadastrarCategoria(){
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +57,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $id)
     {
-    
+
     }
 
     /**

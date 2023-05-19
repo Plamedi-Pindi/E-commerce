@@ -17,7 +17,7 @@
                         <ul>
                             @foreach ($categoriasMenu as $categoria)
                                 <li><a href="{{ route('Produto.categorias', $categoria->id) }}">{{ $categoria->nome }}</a></li>
-                               
+
                             @endforeach
                         </ul>
                     </div>
@@ -120,7 +120,7 @@
                             <div class="featured__item__pic set-bg" data-setbg="/site/img/produtos/{{ $produto->imagem }}">
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-retweet"></i></a></li>
                                     <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
