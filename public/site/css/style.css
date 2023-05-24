@@ -1661,7 +1661,7 @@ ol {
 -----------------------*/
 
 .product-details {
-	padding-top: 80px;
+	padding-top: 2rem;
 }
 
 .product__details__pic__item {
@@ -1913,7 +1913,7 @@ ol {
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item {
-	width: 630px;
+	width: 63px;
 	text-align: left;
 }
 
@@ -2901,6 +2901,22 @@ ol {
 	letter-spacing: 2px;
 }
 
+/* Cart btn */
+.cart-btn-fresh{
+    width: 40px;
+    height: 40px;
+    border:none;
+    background-color:rgb(255, 177, 10) !important;
+    padding: 0 !important;
+    border-radius: 100%;
+    margin-left: 10px;
+}
+
+.cart-btn-esvaziar,
+.cart-btn-comprar{
+    background-color: #7fad39 !important;
+    color: white !important;
+}
 
 
 

@@ -26,12 +26,9 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="#">
-                                <div class="hero__search__categories">
-                                    Todas categorias
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+
+                                <input type="text" placeholder="Deseja buscar um produto?">
+                                <button type="submit" class="site-btn">BUSCAR</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -39,8 +36,8 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+                                <h5>+244 926477947</h5>
+                                <span>Nosso WhatsApp</span>
                             </div>
                         </div>
                     </div>
@@ -119,14 +116,13 @@
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" data-setbg="/site/img/produtos/{{ $produto->imagem }}">
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-retweet"></i></a></li>
                                     <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">
                                 <h6><a href="#">{{ $produto->nome }}</a></h6>
-                                <h5>{{ $produto->preco }} AOA</h5>
+                                <h5>{{ $produto->preco }} KZ</h5>
                             </div>
                         </div>
                     </div>

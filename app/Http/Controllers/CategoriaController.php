@@ -15,7 +15,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('produtos.cadastrarCategoria');
+        return view('site.produtos.cadastrarCategoria');
     }
     // Cadastrar Categoria
     public function cadastrarCategoria(){
@@ -46,7 +46,7 @@ class CategoriaController extends Controller
 
        $categoria->save();
 
-       return redirect('Admindashboard/cadastrarcategoria');
+       return redirect('Admindashboard/categorias');
     }
 
     /**

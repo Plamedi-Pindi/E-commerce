@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Models\User;
 
 class SiteController extends Controller
 {
@@ -17,13 +18,14 @@ class SiteController extends Controller
     {
         $produtos = Produto::paginate(8);
 
+
         return view('home', ['produtos' => $produtos]);
     }
 
     public function categoria($id){
         $categoriaProdutos = Produto::where('id_categoria', $id)->get();
         $categoria = Categoria::find($id);
-        return view('produtos.categoria',
+        return view('site.produtos.categoria',
          [ 'categoriaProdutos' => $categoriaProdutos,
             'categoria' => $categoria
         ]);
@@ -31,19 +33,19 @@ class SiteController extends Controller
 
 
     public function shop(){
-        return view('shop.shop-grid');
+        return view('site.shop.shop-grid');
     }
 
     public function shopDetail($id){
-        $produto = Produto::where('id', $id);
-        return view('shop.shop-details', compact('produto'));
+        $produto = Produto::findOrFail($id);
+        return view('site.shop.shop-details', ['produto' => $produto]);
     }
 
     public function shoppingCart(){
-        return view('shop.shoping-cart');
+        return view('site.shop.shoping-cart');
     }
     public function checkout(){
-        return view('cart.checkout');
+        return view('site.cart.checkout');
     }
 
 

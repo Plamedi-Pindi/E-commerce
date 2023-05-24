@@ -35284,6 +35284,14 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
    margin-bottom: 20px;
 }
 
+.prod-crud-update{
+    display: flex;
+    justify-content: center;
+}
+
+.prod-crud-update li{
+    margin: 0 5px;
+}
 
 
 

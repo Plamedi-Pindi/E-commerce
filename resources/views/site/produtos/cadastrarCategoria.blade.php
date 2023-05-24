@@ -41,7 +41,6 @@
 
                                             <th>ID da categoria</th>
                                             <th>Nome</th>
-                                            <th>Descrição</th>
                                             <th>Ações</th>
                                         </tr>
                                     </thead>
@@ -55,7 +54,6 @@
                                                     <h6>{{ $categoria->nome }}</h6>
                                                     <span>{{ $categoria->updated_at }}</span>
                                                 </td>
-                                                <td><span class="text-primary">{{ $categoria->descricao }} Kz</span></td>
                                                 <td>
                                                     <span class="badge badge-success light border-0">Active</span>
                                                     <div class="icon-box icon-box-md bg-danger-light me-1">
@@ -120,7 +118,6 @@
                         <label>Imagem do Produto</label>
                         <div class="dz-default dlab-message upload-img mb-3">
                             <div class="dropzone">
-                                @csrf
                                 <svg width="41" height="40" viewBox="0 0 41 40" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M27.1666 26.6667L20.4999 20L13.8333 26.6667" stroke="#DADADA" stroke-width="2"
@@ -313,7 +310,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <form action="/produtos/categoria" method="POST" class="col-xl-12">
+                        <form action="/categorias" method="POST" class="col-xl-12">
                             @csrf
                             <label  class="form-label">Nome da categoria<span
                                     class="text-danger">*</span></label>

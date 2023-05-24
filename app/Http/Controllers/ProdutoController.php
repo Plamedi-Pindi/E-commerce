@@ -12,7 +12,7 @@ class ProdutoController extends Controller
     public function index(){
         $produtos = Produto::all();
 
-        return view('produtos.cadastrarProduto', ['produtos' => $produtos]);
+        return view('site.produtos.cadastrarProduto', ['produtos' => $produtos]);
     }
 
 
@@ -40,8 +40,24 @@ class ProdutoController extends Controller
         }
 
         $produto->save();
-        return redirect('Admindashboard/cadastrarproduto');
+        return redirect('Admindashboard/produtos');
     }
 
+    public function destroy($id){
+        Produto::findOrFail($id)->delete();
+        return redirect('Admindashboard/produtos');
+    }
+
+    public function edit($id){
+        $produto = Produto::findOrFail($id);
+
+        return view('site.produtos.editarproduto', ['produto' => $produto]);
+    }
+
+    public function update(Request $request){
+        Produto::findOrFail($request->id)->update($request->all());
+
+        return redirect('Admindashboard/produtos');
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\CarrinhoController;
 use App\Models\Categoria;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;

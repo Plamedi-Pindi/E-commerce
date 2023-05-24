@@ -37,24 +37,21 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+
+                <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ \Cart::getContent()->count() }}</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            <div class="header__cart__price">item: <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} KZ</span></div>
         </div>
         <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="site/img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Português</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
+            @guest
             <div class="header__top__right__auth">
-                <a href="{{ route('home') }}"><i class="fa fa-user"></i> Login</a>
+                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
             </div>
+            @endguest
+
+            @auth
+                <a href="#">pp</a>
+            @endauth
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -85,7 +82,7 @@
         <div class="humberger__menu__contact">
             <ul>
                 <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li>Todos os produtos em promoção</li>
             </ul>
         </div>
     </div>
@@ -100,7 +97,7 @@
                         <div class="header__top__left">
                             <ul>
                                 <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li>Todos os produtos em promoção</li>
                             </ul>
                         </div>
                     </div>
@@ -112,18 +109,15 @@
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <div class="header__top__right__language">
-                                <img src="site/img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Português</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                            @guest
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
                             </div>
+                            @endguest
+
+                            @auth
+                                <a href="#">PP</a>
+                            @endauth
                         </div>
                     </div>
                 </div>
@@ -136,7 +130,7 @@
                         <a href="{{ route('home') }}"><img src="/site/img/logo.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-7    ">
+                <div class="col-lg-7">
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="{{ route('home') }}">Home</a></li>
@@ -160,10 +154,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+
+                            <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ \Cart::getContent()->count() }}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">item: <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} KZ</span></div>
                     </div>
                 </div>
             </div>
