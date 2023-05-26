@@ -35,29 +35,45 @@ Route::middleware([
 })->name('Admindashboard');
 });
 
+// ROTA PARA O LOGOUT
+Route::get('/logout', [SiteController::class, 'logout'])->name('user.logout');
+
 
 // ROTA PARA A VIEW PRODURO
-Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('cadastrarProduto')->middleware('auth');
+Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('adminProduto')->middleware('auth');
 
 // ROTA PARA A VIEW CATEGORIA
-Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('cadastrarCategoria')->middleware('auth');
+Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('adminCategoria')->middleware('auth');
 
 // ROTA PARA DELEITAR UM PRODUTO
-Route::delete('delelatarproduto/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
+Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
 
 // ROTA PARA EDITAR PRODUTO
 Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
 
 // ROTA PARA ATUALIZAR PRODUTO
-Route::post('update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
+Route::put('update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
 
 // ROTA PARA REGISTRAR PRODUTOS
 Route::post('/produtos', [ProdutoController::class, 'store']);
 
-// ROTA PARA CADASTRAR CATEGORIAS
-Route::post('/categorias', [CategoriaController::class, 'store']);
+// ROTA PARA VIEW DE PESQUISA DE PRODUTO
+Route::get('pesquisarProdutos', [SiteController::class, 'pesquisarProduto'])->name('pesquisarProduto');
+
+// ROTAs PARA CADASTRAR CATEGORIAS
+Route::get('/novacategoria', [CategoriaController::class, 'novacategoria'])->name('site.produtos.novaCategoria')->middleware('auth');
+
+Route::post('/categorias', [CategoriaController::class, 'store'])->middleware('auth');
+
+// ROTA PARA DELEITAR UMA CATEGORIA
+Route::delete('deletarcategoria/{id}', [CategoriaController::class, 'destroy'])->middleware('auth');
+
+// ROTA PARA ACESSAR A VIEW DE EDITAR UMA CATEGORIA
+Route::get('editarcategoria/{id}', [CategoriaController::class, 'edit'])->name('editarcategoria')->middleware('auth');
 
 
+// ROTA PARA EDITAR UMA CATEGORIA
+Route::put('update/{id}', [CategoriaController::class, 'update'])->middleware('auth');
 
 
 
@@ -100,3 +116,13 @@ Route::post('/remover', [CarrinhoController::class, 'removeCarrinho'])->name('sh
 Route::post('/atualizar', [CarrinhoController::class, 'atualizarCarrinho'])->name('shop.atualizarcarrinho');
 
 Route::get('/limapar', [CarrinhoController::class, 'limparCarrinho'])->name('shop.limparcarrinho');
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

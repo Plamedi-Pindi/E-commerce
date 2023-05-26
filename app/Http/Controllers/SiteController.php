@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\User;
+use Auth;
 
 class SiteController extends Controller
 {
@@ -14,14 +15,14 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //  METODO INDEX
     public function index()
     {
         $produtos = Produto::paginate(8);
 
-
         return view('home', ['produtos' => $produtos]);
     }
-
+// METODO CATEGORIA
     public function categoria($id){
         $categoriaProdutos = Produto::where('id_categoria', $id)->get();
         $categoria = Categoria::find($id);
@@ -31,7 +32,7 @@ class SiteController extends Controller
         ]);
     }
 
-
+// METODO PARA COMPRAS
     public function shop(){
         return view('site.shop.shop-grid');
     }
@@ -44,9 +45,35 @@ class SiteController extends Controller
     public function shoppingCart(){
         return view('site.shop.shoping-cart');
     }
+
     public function checkout(){
         return view('site.cart.checkout');
     }
 
+    // METODO PARA O LOGOUT
+    public function logout(){
+        Auth::logout();
+        return redirect('/')->with('sucesso', 'Sessão terminada!');
+    }
+
+    // METODO PARA BUSACAS
+    public function pesquisarProduto(){
+
+        return view('site.produtos.Busca')->with('alerta', 'Nenhum item emcontrado, digite o nome do produto na barra de pesquisa!');
+    }
+
+    public function adicionarCarrinho(Request $request){
+        \Cart::add([
+            'id' => $request->id,
+            'name' => $request->nome,
+            'price' => $request->preco,
+            'quantity' => abs($request->qtd),
+            'attributes' => array(
+                'image' => $request->imagem
+            )
+            ]);
+
+        return redirect()->route('Produto.categorias', $request->id)->with('sucesso', 'Produto adicionado ao carrinho!');
+    }
 
  }

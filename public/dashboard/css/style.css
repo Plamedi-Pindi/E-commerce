@@ -35293,6 +35293,59 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     margin: 0 5px;
 }
 
+.nav-text{
+    color: #333;
+    font-size: 15px;
+}
 
+.list-text{
+    font-size: 13px !important;
+    color: #333 !important;
+}
+
+.prod-form-body,
+.categ-form-body{
+    margin: 0 auto;
+}
+
+.prod-form-body label,
+.categ-form-body label{
+    font-size: 17px;
+}
+
+.prod-form-body input,
+.categ-form-body input{
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.prod-form-body textarea{
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.dropzone{
+    margin-bottom: 3rem;
+}
+
+
+.prod-form-body img{
+    width:20% ;
+    margin-left: 3rem;
+}
+
+.prod-form-edit{
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    font-size: 16px;
+}
+
+.prod-form-body .summernote{
+    margin-bottom: 4rem !important;
+}
+
+.categ-form-edit-btn{
+    margin-bottom: 3rem;
+}
 
 

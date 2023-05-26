@@ -12,6 +12,12 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="/site/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/site/css/font-awesome.min.css" type="text/css">
@@ -38,15 +44,17 @@
         <div class="humberger__menu__cart">
             <ul>
 
-                <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ \Cart::getContent()->count() }}</span></a></li>
+                <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
+                        <span>{{ \Cart::getContent()->count() }}</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} KZ</span></div>
+            <div class="header__cart__price">item: <span>{{ number_format(\Cart::getTotal(), 2, ',', '.') }} KZ</span>
+            </div>
         </div>
         <div class="humberger__menu__widget">
             @guest
-            <div class="header__top__right__auth">
-                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
-            </div>
+                <div class="header__top__right__auth">
+                    <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                </div>
             @endguest
 
             @auth
@@ -61,14 +69,14 @@
                     <ul class="header__menu__dropdown">
                         <li><a href="#">Shop Details</a></li>
                         <li><a href="{{ route('shop.shoppingCart') }}">Shoping Cart</a></li>
-                <li><a href="{{ route('cart.checkout') }}">Check Out</a></li>
+                        <li><a href="{{ route('cart.checkout') }}">Check Out</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contatatos</a></li>
                 @auth
-                <li><a href="{{ route('Admindashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('Admindashboard') }}">Dashboard</a></li>
                 @endauth
             </ul>
         </nav>
@@ -88,8 +96,8 @@
     </div>
     <!-- Humberger End -->
 
-     <!-- Header Section Begin -->
-     <header class="header">
+    <!-- Header Section Begin -->
+    <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
@@ -110,13 +118,13 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             @guest
-                            <div class="header__top__right__auth">
-                                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
-                            </div>
+                                <div class="header__top__right__auth">
+                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                                </div>
                             @endguest
 
                             @auth
-                                <a href="#">PP</a>
+                                <a href="{{ route('user.logout') }}">Logout</a>
                             @endauth
                         </div>
                     </div>
@@ -146,7 +154,7 @@
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contatos</a></li>
                             @auth
-                            <li><a href="{{ route('Admindashboard') }}">Dashboard</a></li>
+                                <li><a href="{{ route('Admindashboard') }}">Dashboard</a></li>
                             @endauth
                         </ul>
                     </nav>
@@ -155,9 +163,11 @@
                     <div class="header__cart">
                         <ul>
 
-                            <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ \Cart::getContent()->count() }}</span></a></li>
+                            <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-bag"></i>
+                                    <span>{{ \Cart::getContent()->count() }}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} KZ</span></div>
+                        <div class="header__cart__price">item:
+                            <span>{{ number_format(\Cart::getTotal(), 2, ',', '.') }} KZ</span></div>
                     </div>
                 </div>
             </div>

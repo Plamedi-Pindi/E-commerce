@@ -18,9 +18,9 @@
               <div class="col-lg-9">
                   <div class="hero__search">
                       <div class="hero__search__form">
-                          <form action="#">
-
-                              <input type="text" placeholder="Deseja buscar um produto?">
+                          <form action="{{ route('pesquisarProduto') }}" method="GET" enctype="multipart/form-data">
+                            @csrf
+                              <input type="text" name="busca" placeholder="Deseja buscar um produto?">
                               <button type="submit" class="site-btn">BUSCAR</button>
                           </form>
                       </div>

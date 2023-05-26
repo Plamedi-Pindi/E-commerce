@@ -10,10 +10,25 @@ class ProdutoController extends Controller
 {
 
     public function index(){
-        $produtos = Produto::all();
+        $busca = request('busca');
+        if( $busca){
+            $produtos = Produto::where([
+                ['nome', 'like', '%'.$busca.'%']
+            ])->get();
+        }else{
+            $produtos = Produto::all();
+        }
 
-        return view('site.produtos.cadastrarProduto', ['produtos' => $produtos]);
+
+        return view('site.produtos.adminProduto', ['produtos' => $produtos, 'busca' => $busca]);
     }
+
+    // public function categoria($id){
+    //     $categoriaProdutos = Produto::where('id_categoria', $id)->get();
+    //     $categoria = Categoria::find($id);
+
+    //     return view('site.produtos.adminProduto', );
+    // }
 
 
 
@@ -55,9 +70,32 @@ class ProdutoController extends Controller
     }
 
     public function update(Request $request){
-        Produto::findOrFail($request->id)->update($request->all());
+        $produto =Produto::findOrFail($request->id);
+       
 
-        return redirect('Admindashboard/produtos');
+        $produto->nome = $request->nome;
+        $produto->preco = $request->preco;
+        $produto->descricao = $request->descricao;
+        $produto->id_categoria = $request->categoria;
+
+        $user = auth()->user();
+        $produto->id_user = $user->id;
+
+        // Imagem
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $imagem = $request->imagem;
+            $extensaoImagem = $imagem->extension();
+
+            $nomeImagem = md5($imagem->getClientOriginalName().strtotime('now').".".$extensaoImagem);
+
+            $imagem->move(public_path('/site/img/produtos'), $nomeImagem);
+            $produto->imagem = $nomeImagem;
+        }
+
+        $produto->update($request->all());
+
+        return redirect('Admindashboard/produtos')->with('sucesso', 'O produto selecionado foi atualizado!');
     }
 
+    
 }

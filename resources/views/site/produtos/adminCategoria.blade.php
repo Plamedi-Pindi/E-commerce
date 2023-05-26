@@ -1,17 +1,17 @@
 @extends('layouts.marge.dashMarge')
 
-@section('title', 'Cadastrar Produto')
+@section('title', 'Categoria')
 
 @section('content')
     <!--**********************************
-                                        Content body start
-                            ***********************************-->
+                                                    Content body start
+                    ***********************************-->
     <div class="content-body">
         <!-- row -->
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">Produtos</h5>
+                    <h5 class="bc-title">Categoria</h5>
                 </li>
             </ol>
             <a class="text-primary fs-13" data-bs-toggle="offcanvas" href="#offcanvasExample1" role="button"
@@ -24,96 +24,118 @@
                         <div class="card-body p-0">
                             <div class="table-responsive active-projects style-1">
                                 <div class="tbl-caption">
-                                    <h4 class="heading mb-0">Produtos</h4>
+                                    {{-- Barra de pesquisa --}}
+                                    <form action="{{ route('adminCategoria') }}" method="GET"
+                                        enctype="multipart/form-data" style="margin-top:20px;">
+                                        @csrf
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="busca" class="form-control"
+                                                placeholder="Pesquisar Categoria" aria-label="Recipient's username"
+                                                aria-describedby="button-addon2" style="height:32px;">
+                                            <button class="btn btn-outline-primary" type="submit" id="button-addon2"
+                                                style=" border:1px solid; padding:0 10px">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    {{-- Botoes para novos produtos e categorias --}}
                                     <div>
+                                        <a href="{{ route('adminCategoria') }}" type="button"
+                                            class="btn btn-primary btn-sm" style="margin-right: 5px">
+                                            <?xml version="1.0" encoding="utf-8"?>
+                                            <svg width="30px" height="18px" viewBox="0 0 24 22" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M2 12C2 6.48 6.44 2 12 2C18.67 2 22 7.56 22 7.56M22 7.56V2.56M22 7.56H17.56"
+                                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path opacity="0.4"
+                                                    d="M21.89 12C21.89 17.52 17.41 22 11.89 22C6.37 22 3 16.44 3 16.44M3 16.44H7.52M3 16.44V21.44"
+                                                    stroke="#eee" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            Atualizar
+                                        </a>
                                         <a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
                                             href="#offcanvasExample" role="button" aria-controls="offcanvasExample">+ Novo
                                             Produto</a>
-                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal1">
+                                        <a href="{{ route("site.produtos.novaCategoria") }}" class="btn btn-secondary btn-sm" >
                                             + Nova Categoria
-                                        </button>
+                                        </a>
                                     </div>
+                                </div>
+                                <div style="margin-left: 15px; ">
+                                    @if ($busca)
+                                        <h3 style="color:var(--primary)">Resultado da busca:</h3>
+                                    @endif
+                                    @if ($mensagem = Session::get('sucesso'))
+                                        <div class="alert alert-success" role="alert"
+                                            style=" font-size:17px; text-align:center;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            {{ $mensagem }}
+                                        </div>
+                                    @endif
                                 </div>
                                 <table id="empoloyees-tblwrapper" class="table">
                                     <thead>
                                         <tr>
 
-                                            <th>Imagem</th>
+                                            <th>ID da categoria</th>
                                             <th>Nome</th>
-                                            <th>Preço</th>
-                                            <th>Estoque</th>
-                                            <th>Categoria</th>
                                             <th>Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($produtos as $produto)
+                                        @foreach ($categoriasMenu as $categoria)
                                             <tr>
                                                 <td>
-                                                    <div class="products">
-                                                        <img src="/site/img/produtos/{{ $produto->imagem }}"
-                                                            class="avatar avatar-md" alt="" style="width:80px; height:80px">
-                                                    </div>
+                                                    <span>{{ $categoria->id }}</span>
                                                 </td>
                                                 <td>
-                                                    <h6>{{ $produto->nome }}</h6>
-                                                    <span>{{ $produto->updated_at }}</span>
+                                                    <h6>{{ $categoria->nome }}</h6>
+                                                    <span>{{ $categoria->updated_at }}</span>
                                                 </td>
-                                                <td><span class="text-primary">{{ $produto->preco }} Kz</span></td>
-                                                <td>
-                                                    <span>91</span>
-                                                </td>
-                                                <td>
-                                                    <span>{{ $produto->categoria->nome }}</span>
-                                                </td>
-
                                                 <td>
                                                     <ul class="prod-crud-update">
-                                                        {{-- <li>
-                                                            <span class="badge badge-success light border-0">Active</span>
-                                                        </li> --}}
+
                                                         <li>
-                                                            <form action="/delelatarproduto/{{ $produto->id }}"
+                                                            <form action="/deletarcategoria/{{ $categoria->id }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
 
                                                                 <button type="submit"
                                                                     class="   icon-box icon-box-md bg-danger-light me-1"
-                                                                    style="border:none; display:inline-block">
-                                                                    <svg width="16" height="16" viewBox="0 0 16 16"
-                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    style="border:none; display:inline-block; border-radius: 100%; background-color:rgb(255, 10, 10); width:40px; height:40px">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                        height="35" fill="white" class="bi bi-trash3"
+                                                                        viewBox="0 -6 16 28">
                                                                         <path
-                                                                            d="M12.8833 6.31213C12.8833 6.31213 12.5213 10.8021 12.3113 12.6935C12.2113 13.5968 11.6533 14.1261 10.7393 14.1428C8.99994 14.1741 7.25861 14.1761 5.51994 14.1395C4.64061 14.1215 4.09194 13.5855 3.99394 12.6981C3.78261 10.7901 3.42261 6.31213 3.42261 6.31213"
-                                                                            stroke="#FF5E5E" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                        <path d="M13.8055 4.1598H2.50012" stroke="#FF5E5E"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                        <path
-                                                                            d="M11.6271 4.1598C11.1037 4.1598 10.6531 3.7898 10.5504 3.27713L10.3884 2.46647C10.2884 2.09247 9.94974 1.8338 9.56374 1.8338H6.74174C6.35574 1.8338 6.01707 2.09247 5.91707 2.46647L5.75507 3.27713C5.65241 3.7898 5.20174 4.1598 4.67841 4.1598"
-                                                                            stroke="#FF5E5E" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
+                                                                            d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                                                                     </svg>
                                                                 </button>
                                                             </form>
                                                         </li>
                                                         <li>
                                                             <a class="icon-box icon-box-md bg-primary-light"
-                                                                href="/editarproduto/{{ $produto->id }}" role="button"
-                                                                aria-controls="offcanvasExample">
-                                                                <svg width="16" height="16" viewBox="0 0 16 16"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M9.16492 13.6286H14" stroke="#0D99FF"
-                                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                        d="M8.52001 2.52986C9.0371 1.91186 9.96666 1.82124 10.5975 2.32782C10.6324 2.35531 11.753 3.22586 11.753 3.22586C12.446 3.64479 12.6613 4.5354 12.2329 5.21506C12.2102 5.25146 5.87463 13.1763 5.87463 13.1763C5.66385 13.4393 5.34389 13.5945 5.00194 13.5982L2.57569 13.6287L2.02902 11.3149C1.95244 10.9895 2.02902 10.6478 2.2398 10.3849L8.52001 2.52986Z"
-                                                                        stroke="#0D99FF" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                    <path d="M7.34723 4.00059L10.9821 6.79201"
-                                                                        stroke="#0D99FF" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
+                                                                href="/editarcategoria/{{ $categoria->id }}" role="button"
+                                                                aria-controls="offcanvasExample"
+                                                                style="width:40px; height:40px; border-radius:100%; background-color:var(--primary);">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                                                    height="30" fill="white"
+                                                                    class="bi bi-pencil-square" viewBox="0 -8 16 23">
+                                                                    <path
+                                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                                 </svg>
                                                             </a>
                                                         </li>
@@ -135,7 +157,7 @@
     </div>
 
 
-    {{-- CADASTRAR PRODUTO --}}
+
     <div class="offcanvas offcanvas-end customeoff" tabindex="-1" id="offcanvasExample">
         <div class="offcanvas-header">
             <h5 class="modal-title" id="#gridSystemModal">Novo Produto</h5>
@@ -199,10 +221,11 @@
                             </select>
                         </div>
 
+
                         <div class="col-xl-12 mb-6">
                             <label class="form-label" for="descricao">Descrição do produto<span
                                     class="text-danger">*</span></label>
-                            <textarea name="descricao" class="form-control summernote" id=""></textarea>
+                            <textarea name="descricao" class="form-control " id="summernote"></textarea>
                         </div>
 
                     </div>
@@ -215,7 +238,6 @@
         </div>
     </div>
 
-    
     <div class="offcanvas offcanvas-end customeoff" tabindex="-1" id="offcanvasExample1">
         <div class="offcanvas-header">
             <h5 class="modal-title" id="#gridSystemModal1">Add New Task</h5>
@@ -334,8 +356,6 @@
             </div>
         </div>
     </div>
-
-    {{-- CADASTRAR CATEGORIA --}}
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-center">
             <div class="modal-content">
@@ -366,11 +386,6 @@
             </div>
         </div>
     </div>
-    </div>
-
-    {{-- EDITAR PRODUTO --}}
-    {{-- @include('site.produtos.editarproduto') --}}
-
 
 @endsection
 
@@ -394,7 +409,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
     <script>
-        $('.summernote').summernote({
+        $('#summernote').summernote({
             placeholder: 'Descrição do produto...',
             tabsize: 2,
             height: 150

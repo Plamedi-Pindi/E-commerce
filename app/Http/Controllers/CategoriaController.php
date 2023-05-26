@@ -15,11 +15,23 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('site.produtos.cadastrarCategoria');
+        $busca = request('busca');
+        if($busca){
+            $categoriasMenu = Categoria::where([
+                ['nome', 'like', '%'.$busca.'%']
+
+        ])->get();
+
+        }else{
+            $categoriasMenu = Categoria::all();
+        }
+
+        return view('site.produtos.adminCategoria', ['categoriasMenu' => $categoriasMenu, 'busca' => $busca]);
     }
     // Cadastrar Categoria
-    public function cadastrarCategoria(){
-
+    public function novacategoria(){
+        $categoria = Categoria::all();
+        return view('site.produtos.novaCategoria', compact('categoria'));
     }
     /**
      * Show the form for creating a new resource.
@@ -66,9 +78,10 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+    public function edit($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        return view('site.produtos.editarCategoria', compact('categoria'));
     }
 
     /**
@@ -78,9 +91,17 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request)
     {
-        //
+        $categoria = Categoria::findOrFail($request->id);
+
+        $categoria->nome = $request->nome;
+        $categoria->descricao = $request->descricao;
+ 
+        $categoria->update($request->all());
+
+        return redirect('Admindashboard/categorias')->with('sucesso', 'A categoria selecionada foi atualizada');
+ 
     }
 
     /**
@@ -89,8 +110,9 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+        Categoria::findOrFail($id)->delete();
+        return redirect('Admindashboard/categorias');
     }
 }

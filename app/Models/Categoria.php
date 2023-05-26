@@ -9,6 +9,8 @@ class Categoria extends Model
 {
     use HasFactory;
 
+    protected $guarded =[];
+
     public function produtos(){
         return $this->hasMany('App\Models\Produto');
     }
