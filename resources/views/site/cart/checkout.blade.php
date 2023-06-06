@@ -32,37 +32,55 @@
                 </div>
             </div>
             <div class="checkout__form">
-                <h4>Billing Details</h4>
-                <form action="#">
+                <h4>Detalhes de cobrança</h4>
+                <form action="/cliente" method="POST">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <p>Primeiro Nome<span>*</span></p>
+                                        <input type="text" name="firstName">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <p>Último Nome<span>*</span></p>
+                                        <input type="text" name="lastName">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Pais<span>*</span></p>
+
+                                        <select class="cl-select" name="pais" id="">
+                                            <option class="selected">Seleciona o Pais</option>
+                                            @foreach ($paises as $pais)
+                                                <option value="{{  $pais->paisId }}">{{ $pais->paisNome }}</option>
+                                            @endforeach
+                                        </select>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Town/City<span>*</span></p>
+                                        <select name="" id="">
+                                            <option class="selected">Seleciona a Cidade</option>
+                                            @foreach ($cidades as $cidade)
+                                                <option value="">{{ $cidade->nome }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
                                 <input type="text" placeholder="Street Address" class="checkout__input__add">
                                 <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
                             </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
+
                             <div class="checkout__input">
                                 <p>Country/State<span>*</span></p>
                                 <input type="text">
@@ -113,7 +131,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
-                                <h4>Your Order</h4>
+                                <h4>Seu Pedido</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
                                 <ul>
                                     <li>Vegetable’s Package <span>$75.99</span></li>

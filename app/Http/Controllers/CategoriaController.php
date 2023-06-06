@@ -54,6 +54,7 @@ class CategoriaController extends Controller
        $categoria = new Categoria;
 
        $categoria->nome = $request->nome;
+       $categoria->slug = $request->slug;
        $categoria->descricao = $request->descricao;
 
        $categoria->save();
@@ -96,12 +97,13 @@ class CategoriaController extends Controller
         $categoria = Categoria::findOrFail($request->id);
 
         $categoria->nome = $request->nome;
+        $categoria->slug = $request->slug;
         $categoria->descricao = $request->descricao;
- 
+
         $categoria->update($request->all());
 
         return redirect('Admindashboard/categorias')->with('sucesso', 'A categoria selecionada foi atualizada');
- 
+
     }
 
     /**

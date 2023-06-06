@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Produtos extends Migration
+class CreateTableEstoques extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class Produtos extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->double('preco',10.2);
-            $table->text('descricao');
-            $table->string('imagem');
+        Schema::create('table_estoques', function (Blueprint $table) {
+            $table->integer('id')->autoIncrement();
+            $table->integer('quantidade');
+            $table->date('data');
+            $table->integer('limite_max');
+            $table->integer('limite_min');
+
+            $table->integer('id_produto');
+            $table->foreign('id_produto')->on('produtos')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('id_categoria');
-            $table->foreign('id_categoria')->on('categorias')->references('id')->onDelete('cascade')->onUpdate('cascade');
-
             $table->timestamps();
-
         });
     }
 
@@ -38,6 +37,6 @@ class Produtos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtos');
+        Schema::dropIfExists('table_estoques');
     }
 }

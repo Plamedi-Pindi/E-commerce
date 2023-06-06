@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
@@ -22,7 +23,8 @@ use App\Http\Controllers\SiteController;
 Route::get('/',[SiteController::class, 'index'])->name('home');
 
 // CHECKOUT
-Route::get('fecharaconta', [SiteController::class, 'checkout'])->name('cart.checkout');
+// Route::get('fecharaconta', [ClienteController::class, 'checkout'])->name('cart.checkout');
+Route::get('/checkout', [ClienteController::class, 'checkout'])->name('checkout');
 
 // DASHBORAD
 Route::middleware([
@@ -52,12 +54,15 @@ Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->mid
 Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
 
 // ROTA PARA ATUALIZAR PRODUTO
-Route::put('update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
+Route::put('/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
+
+// ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
+Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
 
 // ROTA PARA REGISTRAR PRODUTOS
 Route::post('/produtos', [ProdutoController::class, 'store']);
 
-// ROTA PARA VIEW DE PESQUISA DE PRODUTO
+// ROTA PARA VIEW DE PESQUISAR DE PRODUTO
 Route::get('pesquisarProdutos', [SiteController::class, 'pesquisarProduto'])->name('pesquisarProduto');
 
 // ROTAs PARA CADASTRAR CATEGORIAS
@@ -70,7 +75,6 @@ Route::delete('deletarcategoria/{id}', [CategoriaController::class, 'destroy'])-
 
 // ROTA PARA ACESSAR A VIEW DE EDITAR UMA CATEGORIA
 Route::get('editarcategoria/{id}', [CategoriaController::class, 'edit'])->name('editarcategoria')->middleware('auth');
-
 
 // ROTA PARA EDITAR UMA CATEGORIA
 Route::put('update/{id}', [CategoriaController::class, 'update'])->middleware('auth');
@@ -126,3 +130,8 @@ Route::get('/limapar', [CarrinhoController::class, 'limparCarrinho'])->name('sho
 //         return view('dashboard');
 //     })->name('dashboard');
 // });
+
+
+Route::get('/estoque', function(){
+    return view('estoque');
+});

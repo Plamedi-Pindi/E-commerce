@@ -1,6 +1,6 @@
 @extends('layouts.marge.dashMarge')
 
-@section('title', 'Novo Produto')
+@section('title', 'Nova Categoria')
 
 @section('content')
 
@@ -21,7 +21,7 @@
                             <div class="table-responsive active-projects style-1">
                                 <div class="tbl-caption">
                                     <div class="categ-form-header col-md-12">
-                                        <h4 class="modal-title" id="#gridSystemModal">Categoria a ser editada:
+                                        <h4 class="modal-title" id="#gridSystemModal">Categorias
                                             </h4>
                                     </div>
 
@@ -32,6 +32,10 @@
                                                 <label class="form-label">Nome da categoria<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="nome" class="form-control">
+
+                                                <label class="form-label">Slug<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="slug" class="form-control">
 
                                                 <div class="mt-3 invite">
                                                     <label class="form-label">Descrição da categoria<span

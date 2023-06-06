@@ -173,7 +173,7 @@
                                 <li>Subtotal <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} Kz</span></li>
                                 <li>Total <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} Kz</span></li>
                             </ul>
-                            <a href="#" class="primary-btn">FAZER O CHECKOUT</a>
+                            <a href="{{ route('checkout') }}" class="primary-btn">FAZER O CHECKOUT</a>
                         </div>
                     </div>
                 </div>

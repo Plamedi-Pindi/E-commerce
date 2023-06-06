@@ -1,6 +1,6 @@
 @extends('layouts.marge.dashMarge')
 
-@section('title', 'Categoria')
+@section('title', 'Categorias')
 
 @section('content')
     <!--**********************************
@@ -60,12 +60,8 @@
                                             </svg>
                                             Atualizar
                                         </a>
-                                        <a class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
-                                            href="#offcanvasExample" role="button" aria-controls="offcanvasExample">+ Novo
-                                            Produto</a>
-                                        <a href="{{ route("site.produtos.novaCategoria") }}" class="btn btn-secondary btn-sm" >
-                                            + Nova Categoria
-                                        </a>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('site.produtos.novoProduto') }}" >+ Novo Produto</a>
+                                        <a href="{{ route("site.produtos.novaCategoria") }}" class="btn btn-secondary btn-sm" > + Nova Categoria </a>
                                     </div>
                                 </div>
                                 <div style="margin-left: 15px; ">

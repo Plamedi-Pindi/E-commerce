@@ -11,7 +11,7 @@
                     <h5 class="bc-title">Produtos</h5>
                 </li>
             </ol>
-            
+
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -26,6 +26,7 @@
 
                                     <div class="prod-form-body col-md-10">
                                         <div class="container-fluid">
+
                                             <form action="/update/{{ $produto->id }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
@@ -74,6 +75,7 @@
                                                     <div class="col-xl-6 mb-3">
                                                         <label class="form-label">Categoria<span class="text-danger">*</span></label>
                                                         <select class=" form-control" name="categoria">
+                                                            <option data-display="Select">{{ $produto->categoria->nome }}</option>
                                                             @foreach ($categoriasMenu as $categoria)
                                                                 <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
                                                             @endforeach
@@ -89,7 +91,7 @@
                                                 </div>
                                                 <div class="prod-form-edit">
                                                     <button class="btn btn-primary me-1" type="submit">Editar</button>
-                                                    <a href="{{ route('cadastrarProduto') }}" class="btn btn-danger light ms-1">Cancel</a>
+                                                    <a href="{{ route('adminProduto') }}" class="btn btn-danger light ms-1">Cancel</a>
                                                 </div>
                                             </form>
                                         </div>

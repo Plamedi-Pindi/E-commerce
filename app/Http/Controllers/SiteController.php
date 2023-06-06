@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Models\Cliente;
 use App\Models\User;
 use Auth;
 
@@ -46,10 +47,7 @@ class SiteController extends Controller
         return view('site.shop.shoping-cart');
     }
 
-    public function checkout(){
-        return view('site.cart.checkout');
-    }
-
+   
     // METODO PARA O LOGOUT
     public function logout(){
         Auth::logout();

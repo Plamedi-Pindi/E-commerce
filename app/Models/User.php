@@ -24,7 +24,8 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'firstName',
+        'lastName',
         'email',
         'password',
     ];
@@ -58,4 +59,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function estoque(){
+        return $this->hasMany('App\Model\Estoque');
+    }
 }
