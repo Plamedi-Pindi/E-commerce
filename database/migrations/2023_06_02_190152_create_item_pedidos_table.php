@@ -14,7 +14,7 @@ class CreateItemPedidosTable extends Migration
     public function up()
     {
         Schema::create('item_pedidos', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id')->autoIncrement();
             $table->integer('quantidade');
             $table->double('precoUnitario');
 

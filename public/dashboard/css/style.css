@@ -9452,6 +9452,28 @@ label {
 [data-header-position="fixed"] .nav-header {
   position: fixed; }
 
+.brand-logo h2{
+    position: relative;
+    left: 10px;
+    display: inline;
+    top: 5px;
+    color: #6a922d;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.brand-logo h2 span{
+    color: rgb(236, 159, 17);
+}
+
+.brand-logo img{
+    width: 30px;
+    display: inline;
+}
+
+
+
 .nav-header {
   height: 3.125rem;
   width: 15rem;
@@ -30433,6 +30455,7 @@ table.dataTable thead .sorting_asc {
   float: unset; }
   .active-projects .dt-buttons .dt-button {
     position: absolute;
+    display: none;
     top: -44px;
     right: 20px;
     font-size: 13px !important;

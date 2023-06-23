@@ -28,10 +28,10 @@ class CreateVendasTable extends Migration
         Schema::create('Pedido_venda', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
 
-            $table->unsignedBigInteger('id_pedido');
+            $table->integer('id_pedido');
             $table->foreign('id_pedido')->on('pedidos')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('id_venda');
+            $table->integer('id_venda');
             $table->foreign('id_venda')->on('vendas')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
         });

@@ -31,7 +31,7 @@ class CategoriaController extends Controller
     // Cadastrar Categoria
     public function novacategoria(){
         $categoria = Categoria::all();
-        return view('site.produtos.novaCategoria', compact('categoria'));
+        return view('site.produtos.novaCategoria', compact('categoria'))->with('success', 'Categoria registado com sucesso!');
     }
     /**
      * Show the form for creating a new resource.

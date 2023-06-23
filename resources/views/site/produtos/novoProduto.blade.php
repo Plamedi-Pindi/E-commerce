@@ -22,6 +22,7 @@
                                 <div class="tbl-caption">
                                     <div class="prod-form-header col-md-12">
                                         <h4 class="modal-title" id="#gridSystemModal">Produto</h4>
+                                        <hr>
                                     </div>
 
                                     <div class="prod-form-body col-md-10">
@@ -46,7 +47,7 @@
                                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                             </svg>
                                                             <div class="fallback">
-                                                                <input name="imagem" id="imagem" type="file" multiple  class="form-control" style="display: inline;" >
+                                                                <input name="imagem" id="imagem" type="file" multiple  class="form-control" style="display: inline;" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -85,7 +86,7 @@
                                                     <div class="col-xl-6 mb-3">
                                                         <label for="estoque" class="form-label">Peso<span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="number" class="form-control" name="peso" id="exampleFormControlInput3" placeholder="">
+                                                        <input type="number" class="form-control" name="peso" id="exampleFormControlInput3" placeholder="" required>
                                                     </div>
 
                                                     <div class="col-xl-6 mb-3">

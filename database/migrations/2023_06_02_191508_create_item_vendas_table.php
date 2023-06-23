@@ -18,10 +18,10 @@ class CreateItemVendasTable extends Migration
             $table->integer('quantidade');
             $table->double('precoUnitario');
 
-            $table->unsignedBigInteger('id_produto');
+            $table->integer('id_produto');
             $table->foreign('id_produto')->on('produtos')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('id_venda');
+            $table->integer('id_venda');
             $table->foreign('id_venda')->on('vendas')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class Endereco extends Model
 {
+
     use HasFactory;
 
-    public function itemPedido(){
-        return $this->hasMany('App\Models\ItemPedido');
+    public function user(){
+        return $this->hasOne('App\Models\User');
     }
 }

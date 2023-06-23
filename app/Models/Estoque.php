@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Estoque extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['quantidade'];
     protected $primaryKey = 'id';
+    
     // protected $foreignKey = 'id_produto';
     public function produto(){
         return $this->belongsTo(Produto::class, 'produto_id');

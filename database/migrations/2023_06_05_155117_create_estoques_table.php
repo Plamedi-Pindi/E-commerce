@@ -37,5 +37,6 @@ class CreateEstoquesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('estoques');
+        
     }
 }

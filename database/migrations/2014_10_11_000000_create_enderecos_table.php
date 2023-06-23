@@ -15,10 +15,10 @@ class CreateEnderecosTable extends Migration
     {
         Schema::create('enderecos', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->string('morada');
-            $table->string('pais');
-            $table->string('cidade');
-            $table->text('descricao');
+           $table->string('morada')->nullable();
+            $table->string('pais')->nullable();
+            $table->string('cidade')->nullable();
+            $table->text('descricao')->nullable();
             $table->timestamps();
         });
     }

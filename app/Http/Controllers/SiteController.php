@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
-use App\Models\Cliente;
+use App\Models\Endereco;
+use App\Models\ItemPedido;
+use App\Models\Pedido;
 use App\Models\User;
 use Auth;
 
@@ -20,8 +22,14 @@ class SiteController extends Controller
     public function index()
     {
         $produtos = Produto::paginate(8);
+        $estante = Produto::paginate(12);
+        $va = Produto::where([
 
-        return view('home', ['produtos' => $produtos]);
+            ['id_categoria', '1']
+
+            ])->get();
+
+        return view('home', ['produtos' => $produtos, 'estante'=> $estante, 'va'=> $va]);
     }
 // METODO CATEGORIA
     public function categoria($id){
@@ -47,7 +55,61 @@ class SiteController extends Controller
         return view('site.shop.shoping-cart');
     }
 
-   
+    public function checkout(){
+        $authUser = auth()->user();
+
+        return view('site.cart.checkout', compact('authUser'));
+    }
+
+
+    public function registrarcliente(Request $request){
+
+        /************ declaracao de variaveis ***********/
+        $usuario = User::findOrFail($request->id);
+        $endereco = new Endereco;
+        $pedido = new Pedido;
+
+        $carItem = \Cart::getContent();
+
+        /************ Preenche tabela endereco ***********/
+        $endereco->morada = $request->morada;
+        $endereco->descricao = $request->descricao;
+        $endereco->save();
+
+        /************ Preenche tabela usuario ***********/
+        $usuario->firstName = $request->firstName;
+        $usuario->lastName = $request->lastName;
+        $usuario->email = $request->email;
+        $usuario->telefone = $request->telefone;
+        $usuario->id_endereco =  $endereco->id;
+        // $usuario->endereco->pais = $request->pais;
+        // $usuario->endereco->cidade = $request->cidade;
+        $usuario->update($request->all());
+
+        /************ Preenche tabela pedidos ***********/
+        $pedido->total = \Cart::getTotal();
+        $pedido->data = $usuario->updated_at;
+
+        $authUser = auth()->user();
+        $pedido->id_user =  $authUser->id;
+        $pedido->save();
+
+         /************ Preenche tabela itemPedidos ***********/
+        foreach($carItem as $intem){
+            ItemPedido::create([
+
+                'quantidade' => $intem->quantity,
+                'precoUnitario' => $intem->price,
+                'id_pedido' => $pedido->id,
+                'id_produto' => $intem->id,
+
+            ]);
+        }
+
+        return back();
+    }
+
+
     // METODO PARA O LOGOUT
     public function logout(){
         Auth::logout();

@@ -6,6 +6,7 @@ use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
+use App\Models\Produto;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,9 @@ use App\Http\Controllers\SiteController;
 Route::get('/',[SiteController::class, 'index'])->name('home');
 
 // CHECKOUT
-// Route::get('fecharaconta', [ClienteController::class, 'checkout'])->name('cart.checkout');
-Route::get('/checkout', [ClienteController::class, 'checkout'])->name('checkout');
+Route::get('/finalizarcompra', [SiteController::class, 'checkout'])->name('site.carrinho.finalizarcompra')->middleware('auth');
+
+Route::put('/cliente/{id}', [SiteController::class, 'registrarcliente']);
 
 // DASHBORAD
 Route::middleware([
@@ -50,11 +52,14 @@ Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->
 // ROTA PARA DELEITAR UM PRODUTO
 Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
 
-// ROTA PARA EDITAR PRODUTO
+// ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
 Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
 
 // ROTA PARA ATUALIZAR PRODUTO
-Route::put('/update/{id}', [ProdutoController::class, 'update'])->middleware('auth');
+// Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar'])->middleware('auth');
+
+Route::put('/atualizar/{id}', [ProdutoController::class, 'atualizar'])->middleware('auth');
+
 
 // ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
 Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
@@ -78,7 +83,6 @@ Route::get('editarcategoria/{id}', [CategoriaController::class, 'edit'])->name('
 
 // ROTA PARA EDITAR UMA CATEGORIA
 Route::put('update/{id}', [CategoriaController::class, 'update'])->middleware('auth');
-
 
 
 // ROTA PARA ACESSAR A VIEW CATEGORIA

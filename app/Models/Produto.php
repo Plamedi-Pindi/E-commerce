@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     use HasFactory;
+    protected $fillable = ['nome'];
     protected $primaryKey = 'id';
 
     public function estoque(){
@@ -18,8 +19,8 @@ class Produto extends Model
         return $this->belongsTo(Categoria::class, 'id_categoria');
     }
 
-    // public function user(){
-    //     return $this->belongsTo(User::class, 'id_user');
-    // }
+    public function itemPedido(){
+        return $this->hasMany('App\Models\ItemPedido');
+    }
 
 }

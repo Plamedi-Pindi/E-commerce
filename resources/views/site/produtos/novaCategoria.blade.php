@@ -31,21 +31,21 @@
                                                 @csrf
                                                 <label class="form-label">Nome da categoria<span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" name="nome" class="form-control">
+                                                <input type="text" name="nome" class="form-control" required>
 
                                                 <label class="form-label">Slug<span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" name="slug" class="form-control">
+                                                <input type="text" name="slug" class="form-control" required>
 
                                                 <div class="mt-3 invite">
                                                     <label class="form-label">Descrição da categoria<span
                                                             class="text-danger">*</span></label>
-                                                    <textarea name="descricao" id="" class="form-control summernote"></textarea>
+                                                    <textarea name="descricao" id="" class="form-control summernote" required></textarea>
                                                 </div>
                                                 <div class="categ-form-edit-btn">
                                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                                                     <a href="{{ route('adminCategoria') }}" class="btn btn-danger light"
-                                                        data-bs-dismiss="modal">Close</a>
+                                                        data-bs-dismiss="modal">Cancelar</a>
                                                 </div>
                                             </form>
                                         </div>

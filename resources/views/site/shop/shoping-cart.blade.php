@@ -158,22 +158,22 @@
                     <div class="col-lg-6">
                         <div class="shoping__continue">
                             <div class="shoping__discount">
-                                <h5>Discount Codes</h5>
+                                <h5>códigos de desconto</h5>
                                 <form action="#">
-                                    <input type="text" placeholder="Enter your coupon code">
-                                    <button type="submit" class="site-btn">APPLY COUPON</button>
+                                    <input type="text" placeholder="Digite seu código de cupom">
+                                    <button type="submit" class="site-btn">APLICAR CUPOM</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="shoping__checkout">
-                            <h5>Cart Total</h5>
+                            <h5>Total do Carrinho</h5>
                             <ul>
                                 <li>Subtotal <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} Kz</span></li>
                                 <li>Total <span>{{ number_format( \Cart::getTotal(), 2, ',', '.' ) }} Kz</span></li>
                             </ul>
-                            <a href="{{ route('checkout') }}" class="primary-btn">FAZER O CHECKOUT</a>
+                            <a href="{{ route('site.carrinho.finalizarcompra') }}" class="primary-btn">FAZER O COMPRA</a>
                         </div>
                     </div>
                 </div>

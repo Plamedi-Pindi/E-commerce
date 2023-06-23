@@ -63,4 +63,8 @@ class User extends Authenticatable
     public function estoque(){
         return $this->hasMany('App\Model\Estoque');
     }
+
+    public function endereco(){
+        return $this->belongsTo(Endereco::class, 'id_endereco');
+    }
 }

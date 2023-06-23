@@ -14,8 +14,7 @@
                     <h5 class="bc-title">Categoria</h5>
                 </li>
             </ol>
-            <a class="text-primary fs-13" data-bs-toggle="offcanvas" href="#offcanvasExample1" role="button"
-                aria-controls="offcanvasExample1">+ Add Task</a>
+
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -65,10 +64,24 @@
                                     </div>
                                 </div>
                                 <div style="margin-left: 15px; ">
+
+                                    {{-- Mensagem --}}
                                     @if ($busca)
                                         <h3 style="color:var(--primary)">Resultado da busca:</h3>
                                     @endif
                                     @if ($mensagem = Session::get('sucesso'))
+                                        <div class="alert alert-success" role="alert"
+                                            style=" font-size:17px; text-align:center;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            {{ $mensagem }}
+                                        </div>
+                                    @endif
+
+                                    @if ($mensagem = Session::get('success'))
                                         <div class="alert alert-success" role="alert"
                                             style=" font-size:17px; text-align:center;">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -86,6 +99,7 @@
 
                                             <th>ID da categoria</th>
                                             <th>Nome</th>
+                                            <th>Slug</th>
                                             <th>Ações</th>
                                         </tr>
                                     </thead>
@@ -100,6 +114,9 @@
                                                     <span>{{ $categoria->updated_at }}</span>
                                                 </td>
                                                 <td>
+                                                    <h6>{{ $categoria->slug }}</h6>
+                                                </td>
+                                                <td>
                                                     <ul class="prod-crud-update">
 
                                                         <li>
@@ -108,17 +125,18 @@
                                                                 @csrf
                                                                 @method('DELETE')
 
-                                                                <button type="submit"
+                                                                <button type="submit "
                                                                     class="   icon-box icon-box-md bg-danger-light me-1"
                                                                     style="border:none; display:inline-block; border-radius: 100%; background-color:rgb(255, 10, 10); width:40px; height:40px">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                                                         height="35" fill="white" class="bi bi-trash3"
-                                                                        viewBox="0 -6 16 28">
+                                                                        viewBox="0 -6 16 28" onclick="categoriaDelete()">
                                                                         <path
                                                                             d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                                                                     </svg>
                                                                 </button>
                                                             </form>
+
                                                         </li>
                                                         <li>
                                                             <a class="icon-box icon-box-md bg-primary-light"
@@ -410,5 +428,12 @@
             tabsize: 2,
             height: 150
         });
+    </script>
+
+    <script>
+       function categoriaDelete(){
+            confirm("Teste");
+       }
+
     </script>
 @endpush
