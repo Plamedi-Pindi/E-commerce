@@ -12,4 +12,12 @@ class Pedido extends Model
     public function itemPedido(){
         return $this->hasMany('App\Models\ItemPedido');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function estado(){
+        return $this->belongsTo(EstadoPedido::class, 'id_estado');
+    }
 }

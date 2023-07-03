@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\Estoque;
+use App\Models\TipoUsuario;
+use App\Models\User;
+use Auth;
 use Illuminate\Support\Facades\File;
 
 
@@ -24,6 +27,7 @@ class ProdutoController extends Controller
             $produtos = Produto::all();
         }
 
+       
 
         return view('site.produtos.adminProduto', ['produtos' => $produtos, 'busca' => $busca])->with('alerta');
     }

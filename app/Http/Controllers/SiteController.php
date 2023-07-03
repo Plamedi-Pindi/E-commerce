@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use App\Models\Endereco;
 use App\Models\ItemPedido;
 use App\Models\Pedido;
+use App\Models\TipoUsuario;
 use App\Models\User;
 use Auth;
 
@@ -68,6 +69,7 @@ class SiteController extends Controller
         $usuario = User::findOrFail($request->id);
         $endereco = new Endereco;
         $pedido = new Pedido;
+        $tipoUsuario = new TipoUsuario;
 
         $carItem = \Cart::getContent();
 
@@ -102,7 +104,6 @@ class SiteController extends Controller
                 'precoUnitario' => $intem->price,
                 'id_pedido' => $pedido->id,
                 'id_produto' => $intem->id,
-
             ]);
         }
 
@@ -136,4 +137,11 @@ class SiteController extends Controller
         return redirect()->route('Produto.categorias', $request->id)->with('sucesso', 'Produto adicionado ao carrinho!');
     }
 
+
+    public function adminPedido(){
+        $pedidos = Pedido::all();
+
+        return view('admin.AdminPedidos', compact('pedidos'));
+    }
  }
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
@@ -53,7 +54,7 @@ Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->
 Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
 
 // ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
-Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
+Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('Auth');
 
 // ROTA PARA ATUALIZAR PRODUTO
 // Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar'])->middleware('auth');
@@ -139,3 +140,11 @@ Route::get('/limapar', [CarrinhoController::class, 'limparCarrinho'])->name('sho
 Route::get('/estoque', function(){
     return view('estoque');
 });
+
+
+// Admin control
+Route::get('/adminPedidos', [SiteController::class, 'adminPedido'])->name('admin.pedidos');
+
+Route::get('/funcionario', [AdminController::class, 'funcionario'])->name('admin.funcionario');
+
+Route::get('/cliente', [AdminController::class, 'cliente'])->name('admin.cliente');

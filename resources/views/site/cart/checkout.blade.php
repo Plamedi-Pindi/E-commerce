@@ -84,10 +84,10 @@
                                         @foreach ($items as $item)
                                         <li>{{ $item->name }}<span>{{ number_format($item->price, 2, ',', '.') }} kz (X{{ $item->quantity }})</span> </li>
 
-                                        {{-- <input type="hidden" name="quantidade" value="{{ $item->quantity }}">
-                                        <input type="hidden" name="precoUnitario" value="{{ $item->price }}"> --}}
                                         @endforeach
-                                    @endif
+                                        @endif
+                                        <input type="hidden" name="estado" value="pendente">
+
                                 </ul>
                                 <div class="checkout__order__subtotal">Subtotal <span>{{ number_format(\Cart::getTotal(), 2, ',', '.') }} kz</span></div>
                                 <div class="checkout__order__total">Total <span>{{ number_format(\Cart::getTotal(), 2, ',', '.') }}kz</span></div>

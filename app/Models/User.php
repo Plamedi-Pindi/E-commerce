@@ -28,6 +28,7 @@ class User extends Authenticatable
         'lastName',
         'email',
         'password',
+        'genero',
     ];
 
     /**
@@ -67,4 +68,15 @@ class User extends Authenticatable
     public function endereco(){
         return $this->belongsTo(Endereco::class, 'id_endereco');
     }
+
+
+    public function pedidos(){
+        return $this->hasMany('App\Models\Pedido');
+    }
+
+
+    public function tipoUsuario(){
+        return $this->belongsTo(Tipo_usuario::class, 'id_tipo');
+    }
+
 }

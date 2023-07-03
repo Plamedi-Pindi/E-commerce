@@ -29,14 +29,19 @@
                             :value="old('email')" required placeholder="Email" />
                     </div>
 
+                    {{-- <div>
+                        <x-jet-input id="tipo" type="number" name="tipo"/>
+                    </div> --}}
+
                     <div class="mt-4">
                         <x-jet-label for="genero" value="{{ __('Genero') }}" />
-                        <select name="gemero" id="gemero" :value="old('gener')" class="block mt-1 w-full">
-                            <option value="#" class="selected"> Seleciona uma opção</option>
-                            <option value="#">Masculino</option>
-                            <option value="#">Femenino</option>
+                        <select name="genero" id="genero" :value="old('genero')" class="block mt-1 w-full">
+                            <option  class="selected"> Seleciona uma opção</option>
+                            <option value="Mascolino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
                         </select>
                     </div>
+
 
                 </div>
 

@@ -20,6 +20,9 @@ class CreatePedidosTable extends Migration
 
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->integer('id_estado');
+            $table->foreign('id_estado')->on('estado_pedidos')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
