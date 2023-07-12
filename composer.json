@@ -13,7 +13,10 @@
         "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.5"
+        "league/omnipay": "^3",
+        "livewire/livewire": "^2.5",
+        "omnipay/paypal": "^3.0",
+        "tymon/jwt-auth": "1.x"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
@@ -59,7 +62,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

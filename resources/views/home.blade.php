@@ -98,7 +98,7 @@
                             <div class="featured__item__pic set-bg" data-setbg="/site/img/produtos/{{ $produto->imagem }}">
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="#"  ><i class="fa fa-shopping-cart addCart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">
@@ -291,5 +291,120 @@
         </div>
     </section> --}}
     <!-- Latest Product Section End -->
+
+    {{-- Cart Modal --}}
+    <div id="cartModal">
+        <div id="cartModalContent">
+            <section class="shoping-cart spad">
+                <div class="container">
+                    {{-- Mensagem de Sucesso --}}
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="shoping__cart__table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="shoping__product"></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($items as $item)
+                                                <tr>
+                                                    <td class="shoping__cart__item">
+                                                        <img src="/site/img/produtos/{{ $item->attributes->image }}"
+                                                            alt="{{ $item->name }}" width="110px">
+                                                    </td>
+                                                    <td>
+                                                        <h5>{{ $item->name }}</h5>
+                                                    </td>
+                                                    <td class="shoping__cart__price">
+                                                        {{ number_format($item->price, 2, ',', '.') }} Kz
+                                                    </td>
+
+                                                    {{-- Atualizar --}}
+                                                    <form action="{{ route('shop.atualizarcarrinho') }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                                        <td class="shoping__cart__quantity">
+                                                            <div class="quantity">
+                                                                <div class="pro-qty">
+
+                                                                    <input type="number" min="1" name="qtd"
+                                                                        value="{{ $item->quantity }}">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td class="shoping__cart__item__close">
+                                                            <button class="primary-btn cart-btn cart-btn-right cart-btn-fresh">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                    height="20" fill="white" class="bi bi-arrow-clockwise"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                                                    <path
+                                                                        d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+                                                                </svg>
+                                                            </button>
+
+                                                    </form>
+
+                                                    {{-- Eliminar Produto no carrinho --}}
+                                                    <form action="{{ route('shop.removecarrinho') }}" method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                                        <button type="submit" class=" "
+                                                            style="border:none; background-color:rgb(255, 10, 10); border-radius: 100%">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30"
+                                                                fill="white" class="bi bi-trash3" viewBox="0 -6 16 28">
+                                                                <path
+                                                                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="shoping__cart__btns">
+                                    {{-- Botao para continuar comprando --}}
+                                    <button class="primary-btn cart-btn cart-btn-comprar" style="border: none" id="cartModalBotaoContinuar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                                          </svg>
+                                          CONTIMUAR
+                                    </button>
+                                    {{-- Botao para esvaziar o carrinho --}}
+                                    <a href="{{ route('site.carrinho.finalizarcompra') }}"
+                                        class="primary-btn cart-btn cart-btn-right cart-btn-esvaziar">
+
+                                        Comprar
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
 
 @endsection

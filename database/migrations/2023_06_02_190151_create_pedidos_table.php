@@ -15,12 +15,12 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->double('total');
+            $table->double('total', 10, 2);
             $table->dateTime('data');
 
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->integer('id_estado');
             $table->foreign('id_estado')->on('estado_pedidos')->references('id')->onDelete('cascade')->onUpdate('cascade');
 

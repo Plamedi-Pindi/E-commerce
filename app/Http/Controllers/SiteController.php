@@ -22,15 +22,12 @@ class SiteController extends Controller
     //  METODO INDEX
     public function index()
     {
+        $items = \Cart::getContent();
         $produtos = Produto::paginate(8);
         $estante = Produto::paginate(12);
-        $va = Produto::where([
 
-            ['id_categoria', '1']
 
-            ])->get();
-
-        return view('home', ['produtos' => $produtos, 'estante'=> $estante, 'va'=> $va]);
+        return view('home', ['produtos' => $produtos, 'estante'=> $estante, 'items'=> $items]);
     }
 // METODO CATEGORIA
     public function categoria($id){
@@ -71,7 +68,7 @@ class SiteController extends Controller
         $pedido = new Pedido;
         $tipoUsuario = new TipoUsuario;
 
-        $carItem = \Cart::getContent();
+
 
         /************ Preenche tabela endereco ***********/
         $endereco->morada = $request->morada;
@@ -97,6 +94,7 @@ class SiteController extends Controller
         $pedido->save();
 
          /************ Preenche tabela itemPedidos ***********/
+         $carItem = \Cart::getContent();
         foreach($carItem as $intem){
             ItemPedido::create([
 

@@ -2944,9 +2944,34 @@ ol {
     background-size: cover;
 }
 
+/* ############### Add Cart ##################33 */
 
+#cartModal{
+    background: rgba(0, 0, 0, 0.4);
+    min-width:0%;
+    height:100vh;
 
+    position: fixed;
+    z-index: 1;
+    top: 0;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cartModalContent{
+    display: none;
+
+    width: 550px;
+    height: 450px;
+    position: relative;
+
+    overflow-y: scroll;
+
+    background-color: white;
+
+}
 
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/

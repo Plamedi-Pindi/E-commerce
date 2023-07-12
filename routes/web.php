@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\apiController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Http ;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +56,7 @@ Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->
 Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
 
 // ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
-Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('Auth');
+Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
 
 // ROTA PARA ATUALIZAR PRODUTO
 // Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar'])->middleware('auth');
@@ -148,3 +150,12 @@ Route::get('/adminPedidos', [SiteController::class, 'adminPedido'])->name('admin
 Route::get('/funcionario', [AdminController::class, 'funcionario'])->name('admin.funcionario');
 
 Route::get('/cliente', [AdminController::class, 'cliente'])->name('admin.cliente');
+
+
+// API CONTROLLER
+
+
+Route::get('/pagamento', [ApiController::class, 'index'])->name('api.systemapi');
+
+
+Route::post('/pagar', [ApiController::class, 'pagamento'])->name('api.pagamento');
