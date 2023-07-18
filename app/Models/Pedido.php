@@ -9,8 +9,10 @@ class Pedido extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id_user'];
+
     public function itemPedido(){
-        return $this->hasMany('App\Models\ItemPedido');
+        return $this->hasMany('App\Models\Item_pedido');
     }
 
     public function user(){

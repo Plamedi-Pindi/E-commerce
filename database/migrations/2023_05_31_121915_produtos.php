@@ -26,6 +26,9 @@ class Produtos extends Migration
             $table->integer('id_categoria');
             $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->integer('estado_id');
+            $table->foreign('estado_id')->references('id')->on('estado_produtos')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
 
         });

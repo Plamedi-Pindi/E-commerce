@@ -18,7 +18,7 @@ for(i=0; i<=addCart.length; i++){
         }, 300)
         console.log(addCart.length)
     })
-
+    
 
 
     cartModalBotaoContinuar.addEventListener('click', ()=>{

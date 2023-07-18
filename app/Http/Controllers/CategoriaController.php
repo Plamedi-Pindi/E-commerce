@@ -56,6 +56,7 @@ class CategoriaController extends Controller
        $categoria->nome = $request->nome;
        $categoria->slug = $request->slug;
        $categoria->descricao = $request->descricao;
+       
 
        $categoria->save();
 

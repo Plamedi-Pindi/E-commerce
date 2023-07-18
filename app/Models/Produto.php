@@ -20,7 +20,10 @@ class Produto extends Model
     }
 
     public function itemPedido(){
-        return $this->hasMany('App\Models\ItemPedido');
+        return $this->hasMany('App\Models\Item_pedido');
     }
 
+    public function estadoProduto(){
+        return $this->belongsTo(Estado_produto::class,'estado_id');
+    }
 }

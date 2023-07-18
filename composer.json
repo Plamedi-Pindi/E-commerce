@@ -13,9 +13,10 @@
         "laravel/jetstream": "^2.9",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "league/omnipay": "^3",
+        "league/omnipay": "^3.2",
         "livewire/livewire": "^2.5",
         "omnipay/paypal": "^3.0",
+        "srmklive/paypal": "^3.0",
         "tymon/jwt-auth": "1.x"
     },
     "require-dev": {
@@ -31,7 +32,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Omnipay\\": "vendor/omnipay/omnipay/src/"
         }
     },
     "autoload-dev": {
@@ -39,6 +41,7 @@
             "Tests\\": "tests/"
         }
     },
+
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

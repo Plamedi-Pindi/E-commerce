@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
-
+        // Omnipay\Common\ServiceProvider::class,
         /*
          * Package Service Providers...
          */

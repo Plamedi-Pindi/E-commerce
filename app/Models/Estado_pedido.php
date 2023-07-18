@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tipo_usuario extends Model
+class Estado_pedido extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->hasOne('App\Models\User');
+    public function pedidos(){
+        return $this->hasOne('App\Models\Pedido');
     }
 
 }

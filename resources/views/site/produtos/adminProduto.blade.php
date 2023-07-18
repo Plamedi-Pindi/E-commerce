@@ -103,6 +103,7 @@
                                             <th>Peso</th>
                                             <th>Estoque</th>
                                             <th>Categoria</th>
+                                            <th>Estado</th>
                                             <th>Ações</th>
                                         </tr>
                                     </thead>
@@ -132,6 +133,12 @@
                                                 <td>
                                                     <span class="list-text">{{ $produto->categoria->nome }}</span>
                                                 </td>
+
+                                                <td class="pe-0">
+                                                    {{-- <span class="list-text">{{ $produto->estadoProduto->nome }}</span> --}}
+                                                    <button class="badge badge-success light border-0" style="border: noneN">Normal</button>
+                                                </td>
+
 
                                                 <td>
                                                     <ul class="prod-crud-update">

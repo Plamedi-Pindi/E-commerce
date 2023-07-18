@@ -53,6 +53,6 @@ class AppServiceProvider extends ServiceProvider
         $estoque = Estoque::all();
         view()->share('estoque', $estoque);
 
-      
+
     }
 }

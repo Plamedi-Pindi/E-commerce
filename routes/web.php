@@ -29,7 +29,6 @@ Route::get('/',[SiteController::class, 'index'])->name('home');
 // CHECKOUT
 Route::get('/finalizarcompra', [SiteController::class, 'checkout'])->name('site.carrinho.finalizarcompra')->middleware('auth');
 
-Route::put('/cliente/{id}', [SiteController::class, 'registrarcliente']);
 
 // DASHBORAD
 Route::middleware([
@@ -128,16 +127,6 @@ Route::post('/atualizar', [CarrinhoController::class, 'atualizarCarrinho'])->nam
 
 Route::get('/limapar', [CarrinhoController::class, 'limparCarrinho'])->name('shop.limparcarrinho');
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
 
 Route::get('/estoque', function(){
     return view('estoque');
@@ -152,10 +141,16 @@ Route::get('/funcionario', [AdminController::class, 'funcionario'])->name('admin
 Route::get('/cliente', [AdminController::class, 'cliente'])->name('admin.cliente');
 
 
-// API CONTROLLER
+
+// ################## PAGAMENTO #########################
 
 
-Route::get('/pagamento', [ApiController::class, 'index'])->name('api.systemapi');
+Route::get('/pagamento', [ApiController::class, 'pagamento'])->name('api.pagamento');
+
+Route::get('payment-cancel', [ApiController::class, 'cancel'])->name('payment.cancel');
+
+Route::get('payment-success', [ApiController::class, 'success'])->name('payment.success');
+
+Route::put('/pedidos/{id}', [apiController::class, 'pagamento']);
 
 
-Route::post('/pagar', [ApiController::class, 'pagamento'])->name('api.pagamento');

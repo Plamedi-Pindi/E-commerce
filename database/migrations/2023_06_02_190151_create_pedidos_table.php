@@ -17,6 +17,7 @@ class CreatePedidosTable extends Migration
             $table->integer('id')->autoIncrement();
             $table->double('total', 10, 2);
             $table->dateTime('data');
+            
 
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');

@@ -31,7 +31,7 @@
             <div class="checkout__form">
                 <h4>Detalhes de cobrança</h4>
                 {{-- Formulario start --}}
-                <form action="/cliente/{{ $authUser->id }}" method="POST">
+                <form action="/pedidos/{{ $authUser->id }}" method="POST">
                     @csrf
                     @method('PUT')
 

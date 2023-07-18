@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemPedido extends Model
+class Item_pedido extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
