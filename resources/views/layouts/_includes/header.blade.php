@@ -68,7 +68,7 @@
             <ul>
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
-                <li><a href="./contact.html">Contatatos</a></li>
+                <li><a href="{{ route('site.contatos') }}">Contatatos</a></li>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
@@ -130,7 +130,7 @@
                         <ul>
                             <li class="active"><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
-                            <li><a href="./contact.html">Contatos</a></li>
+                            <li><a href="{{ route('site.contatos') }}">Contatos</a></li>
                         </ul>
                     </nav>
                 </div>

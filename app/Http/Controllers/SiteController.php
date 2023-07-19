@@ -40,9 +40,15 @@ class SiteController extends Controller
         ]);
     }
 
+    public function contatos(){
+        return view('contact');
+    }
+
 // METODO PARA COMPRAS
     public function shop(){
-        return view('site.shop.shop-grid');
+        $produtos = Produto::all();
+
+        return view('site.shop.shop-grid', compact('produtos'));
     }
 
     public function shopDetail($id){

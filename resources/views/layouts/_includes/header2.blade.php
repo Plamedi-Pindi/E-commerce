@@ -65,7 +65,7 @@
             <ul>
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="r{{ route('shop.shop-grid') }}">Loja</a></li>
-                <li><a href="./contact.html">Contatatos</a></li>
+                <li><a href="{{ route('site.contatos') }}">Contatatos</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -127,7 +127,7 @@
                         <ul>
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li class="active"><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
-                            <li><a href="./contact.html">Contatatos</a></li>
+                            <li><a href="{{ route('site.contatos') }}">Contatatos</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -41,6 +41,8 @@ Route::middleware([
 })->name('Admindashboard');
 });
 
+Route::get('/contatos', [SiteController::class, 'contatos'])->name('site.contatos');
+
 // ROTA PARA O LOGOUT
 Route::get('/logout', [SiteController::class, 'logout'])->name('user.logout');
 
@@ -153,6 +155,10 @@ Route::get('payment-cancel', [ApiController::class, 'cancel'])->name('payment.ca
 
 Route::get('payment-success', [ApiController::class, 'success'])->name('payment.success');
 
-Route::pos('/entrega/{id}', [AdminController::class, 'entrega'])->name('admin.entrega');
+Route::put('/pedidos/{id}', [apiController::class, 'pagamento']);
+
+Route::put('/entrega/{id}', [AdminController::class, 'entrega'])->name('admin.entrega');
+
+Route::put('/promocao/{id}', [AdminController::class, 'promocao'])->name('admin.promocao');
 
 

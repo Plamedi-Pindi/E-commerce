@@ -78,13 +78,14 @@ class AdminController extends Controller
             $pedido->update();
         }
 
-
-
-
-
-
-
         return back()->with('success', 'Entrega realizada com sucesso!');
+    }
+
+
+
+    public function promocao($id){
+
+        return back();
     }
 
 

@@ -4,8 +4,8 @@
 
 @section('content')
     <!--**********************************
-                                            Content body start
-                                ***********************************-->
+                                                Content body start
+                                    ***********************************-->
     <div class="content-body">
         <!-- row -->
         <div class="page-titles">
@@ -26,8 +26,8 @@
 
                                 <div class="tbl-caption">
                                     {{-- Barra de pesquisa --}}
-                                    <form action="{{ route('adminProduto') }}" method="GET"
-                                        enctype="multipart/form-data" style="margin-top:20px;">
+                                    <form action="{{ route('adminProduto') }}" method="GET" enctype="multipart/form-data"
+                                        style="margin-top:20px;">
                                         @csrf
                                         <div class="input-group mb-3">
                                             <input type="text" name="busca" class="form-control"
@@ -45,10 +45,11 @@
                                     </form>
                                     {{-- Botoes para novos produtos e categorias --}}
                                     <div>
-                                        <a href="{{ route('adminProduto') }}" type="button" class="btn btn-primary btn-sm" style="margin-right: 5px">
+                                        <a href="{{ route('adminProduto') }}" type="button" class="btn btn-primary btn-sm"
+                                            style="margin-right: 5px">
                                             <?xml version="1.0" encoding="utf-8"?>
                                             <svg width="30px" height="18px" viewBox="0 0 24 22" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg" >
+                                                xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M2 12C2 6.48 6.44 2 12 2C18.67 2 22 7.56 22 7.56M22 7.56V2.56M22 7.56H17.56"
                                                     stroke="white" stroke-width="1.5" stroke-linecap="round"
@@ -61,35 +62,41 @@
                                             Atualizar
                                         </a>
 
-                                        <a class="btn btn-primary btn-sm" href="{{ route('site.produtos.novoProduto') }}" >+ Novo Produto</a>
-                                        <a href="{{ route('site.produtos.novaCategoria') }}" class="btn btn-secondary btn-sm" > + Nova Categoria </a>
+                                        <a class="btn btn-primary btn-sm" href="{{ route('site.produtos.novoProduto') }}">+
+                                            Novo Produto</a>
+                                        <a href="{{ route('site.produtos.novaCategoria') }}"
+                                            class="btn btn-secondary btn-sm"> + Nova Categoria </a>
                                     </div>
                                 </div>
                                 <div style="margin-left: 15px; ">
 
-                                     {{-- Mensagens --}}
+                                    {{-- Mensagens --}}
                                     @if ($busca)
                                         <h3 style="color:var(--primary)">Resultado da busca:</h3>
                                     @endif
                                     @if ($mensagem = Session::get('sucesso'))
-                                    <div class="alert alert-success" role="alert" style=" font-size:17px; text-align:center;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                          </svg>
-                                        {{ $mensagem }}
-                                      </div>
+                                        <div class="alert alert-success" role="alert"
+                                            style=" font-size:17px; text-align:center;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            {{ $mensagem }}
+                                        </div>
                                     @endif
 
                                     @if ($mensagem = Session::get('alert'))
-                                    <div class="alert alert-danger" role="alert" style=" font-size:17px; text-align:center;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
-                                            <path
-                                                d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
-                                            <path
-                                                d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
-                                        </svg>
-                                      {{ $mensagem }}
+                                        <div class="alert alert-danger" role="alert"
+                                            style=" font-size:17px; text-align:center;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+                                                <path
+                                                    d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+                                            </svg>
+                                            {{ $mensagem }}
                                     @endif
 
                                 </div>
@@ -135,8 +142,16 @@
                                                 </td>
 
                                                 <td class="pe-0">
-                                                    {{-- <span class="list-text">{{ $produto->estadoProduto->nome }}</span> --}}
-                                                    <button class="badge badge-success light border-0" style="border: noneN">Normal</button>
+                                                    @if ($produto->estadoProduto->id == 1)
+                                                        <button class="badge badge-primary light border-0   "
+                                                            style="border: none">Normal</button>
+
+                                                        {{-- MODAL PARA PROMOCAO --}}
+
+                                                    @else
+                                                        <button class="badge badge-success light border-0"
+                                                            style="border: none">Em Promoção</button>
+                                                    @endif
                                                 </td>
 
 
@@ -155,8 +170,8 @@
                                                                     class="   icon-box icon-box-md bg-danger-light me-1"
                                                                     style="border:none; display:inline-block; border-radius: 100%; background-color:rgb(255, 10, 10); width:40px; height:40px">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="30"
-                                                                        height="35" fill="white" class="bi bi-trash3"
-                                                                        viewBox="0 -6 16 28">
+                                                                        height="35" fill="white"
+                                                                        class="bi bi-trash3" viewBox="0 -6 16 28">
                                                                         <path
                                                                             d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                                                                     </svg>
