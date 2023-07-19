@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
-
+    protected $primaryKey = 'id';
     protected $fillable = ['id_user'];
 
     public function itemPedido(){

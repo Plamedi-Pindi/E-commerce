@@ -104,7 +104,7 @@
                                                 </div>
                                                 <div class="prod-form-edit">
                                                     <button class="btn btn-primary me-1" type="submit">Cadastrar</button>
-                                                    <a href="{{ route('adminProduto') }}" class="btn btn-danger light ms-1">Cancel</a>
+                                                    <a href="{{ route('adminProduto') }}" class="btn btn-danger light ms-1">Cancelar</a>
                                                 </div>
                                             </form>
                                         </div>

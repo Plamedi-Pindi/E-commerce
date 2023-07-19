@@ -45,7 +45,7 @@
                                                 <div class="categ-form-edit-btn">
                                                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                                                     <a href="{{ route('adminCategoria') }}" class="btn btn-danger light"
-                                                        data-bs-dismiss="modal">Cancelar</a>
+                                                        >Cancelar</a>
                                                 </div>
                                             </form>
                                         </div>

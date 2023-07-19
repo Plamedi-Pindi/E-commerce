@@ -19,7 +19,7 @@
                                         <div class="product__item__pic set-bg"
                                             data-setbg="/site/img/produtos/{{ $produto->imagem }}">
                                             <ul class="product__item__pic__hover">
-                                                <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-retweet"></i></a></li>
+                                                <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-eye"></i></a></li>
                                                     <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>

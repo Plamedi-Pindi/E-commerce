@@ -9,10 +9,10 @@ class Item_pedido extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
-    protected $fillable = ['quantidade', 'precoUnitario', 'id_pedido', 'id_produto'];
+    protected $fillable = ['quantidade', 'precoUnitario', 'pedido_id', 'id_produto'];
 
     public function pedido(){
-        return $this->belongsTo(Pedido::class, 'id_pedido');
+        return $this->belongsTo(Pedido::class, 'pedido_id');
     }
 
     public function produto(){

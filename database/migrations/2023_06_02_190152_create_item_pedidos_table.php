@@ -18,8 +18,8 @@ class CreateItemPedidosTable extends Migration
             $table->integer('quantidade');
             $table->double('precoUnitario');
 
-            $table->integer('id_pedido');
-            $table->foreign('id_pedido')->on('pedidos')->references('id')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('pedido_id');
+            $table->foreign('pedido_id')->on('pedidos')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
             $table->integer('id_produto');
             $table->foreign('id_produto')->on('produtos')->references('id')->onDelete('cascade')->onUpdate('cascade');

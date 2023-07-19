@@ -13,6 +13,7 @@ use App\Models\Produto;
 use App\Models\Tipo_usuario;
 use App\Models\Endereco;
 use App\Models\Item_pedido;
+use App\Models\Item_venda;
 use App\Models\Venda;
 
 class ApiController extends Controller
@@ -63,7 +64,6 @@ class ApiController extends Controller
                 $tipoUsuario = new Tipo_usuario;
 
 
-
                 /************ Preenche tabela endereco ***********/
                 $endereco->morada = $request->morada;
                 $endereco->descricao = $request->descricao;
@@ -97,7 +97,7 @@ class ApiController extends Controller
 
                         'quantidade' => $intem->quantity,
                         'precoUnitario' => $intem->price,
-                        'id_pedido' => $pedido->id,
+                        'pedido_id' => $pedido->id,
                         'id_produto' => $intem->id,
                     ]);
                 }
@@ -111,7 +111,6 @@ class ApiController extends Controller
 
             return "Erro";
         }
-
 
     }
 
@@ -132,13 +131,62 @@ class ApiController extends Controller
 
 
         if (isset($respoonse['status']) && $respoonse['status'] == 'COMPLETED') {
+            $carItems = \Cart::getContent();
             $venda = new Venda;
             $id_pagamento = $respoonse['id'];
+            $pedidos = Pedido::where('id_pagamento', $id_pagamento)->get();
+
+            foreach($pedidos as $pedido){
+                $venda->totla = $pedido->total;
+                $venda->id_user = auth()->user()->id;
+                $venda->ref_pagamento = $id_pagamento;
+                $venda->save();
+
+                //Buscar O registro da venda mais recente
+                $vendas = Venda::where('ref_pagamento', $id_pagamento)->get();
+                $itemVenda = new Item_venda;
+
+                // Preencher a tabela venda
+                foreach($carItems as $item){
+
+                    $itemVenda->quantidade = $item->quantity;
+                    $itemVenda->precoUnitario = $item->price;
+                }
+
+                // Passar os dados da tabela itemPedidos para itemVendas
+                $itemPedidos = Item_pedido::where('pedido_id', $pedido->id)->get();
+                foreach($itemPedidos as $itemPedido){
+                    $itemVenda->id_produto = $itemPedido->id_produto;
+
+                    // $produto = Produto::where('id', $itemPedido->id_produto)->get();
+                    // foreach($carItems as $item){
+                    //     $produto->estoque->quantidade = ( $produto->estoque->quantidade - $item->quantity);
+
+                    // }
+                }
+
+                // Atualizar a tabela Pedidos
+                $pedido->id_estado = 2;
+                $pedido->update();
+
+                foreach($vendas as $venda){
+
+                    $itemVenda->id_venda = $venda->id;
+                }
+                $itemVenda->save();
+
+                // Esvaziar o Carrinho de compra
+                \Cart::clear();
+
+
+            }
+
+
+
 
         }
-        
-        dd($respoonse);
 
+        return redirect()->route('home')->with('success', 'O Pagamento foi efetuado com sucesso!');
 
     }
 
