@@ -10,6 +10,7 @@ use App\Models\Item_pedido;
 use App\Models\Pedido;
 use App\Models\Tipo_usuario;
 use App\Models\User;
+use App\Models\Venda;
 use Auth;
 
 class SiteController extends Controller
@@ -88,9 +89,17 @@ class SiteController extends Controller
 
 
     public function adminPedido(){
-        $pedidos = Pedido::all();
+        $pedidos = Pedido::where('id_estado', '<', 3 )->get();
 
         return view('admin.AdminPedidos', compact('pedidos'));
     }
+
+    public function vendas(){
+        $vendas = Venda::all();
+
+        return view('admin.venda', compact('vendas'));
+    }
+
+
  }
 

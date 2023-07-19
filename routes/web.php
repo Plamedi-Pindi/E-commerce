@@ -134,7 +134,9 @@ Route::get('/estoque', function(){
 
 
 // Admin control
-Route::get('/adminPedidos', [SiteController::class, 'adminPedido'])->name('admin.pedidos');
+Route::get('/pedidos', [SiteController::class, 'adminPedido'])->name('admin.pedidos');
+
+Route::get('/vendas', [SiteController::class, 'vendas'])->name('admin.vendas');
 
 Route::get('/funcionario', [AdminController::class, 'funcionario'])->name('admin.funcionario');
 
@@ -151,6 +153,6 @@ Route::get('payment-cancel', [ApiController::class, 'cancel'])->name('payment.ca
 
 Route::get('payment-success', [ApiController::class, 'success'])->name('payment.success');
 
-Route::put('/pedidos/{id}', [apiController::class, 'pagamento']);
+Route::pos('/entrega/{id}', [AdminController::class, 'entrega'])->name('admin.entrega');
 
 

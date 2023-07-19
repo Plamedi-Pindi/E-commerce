@@ -29,7 +29,7 @@
                                      @csrf
                                      <div class="input-group mb-3">
                                          <input type="text" name="busca" class="form-control"
-                                             placeholder="Pesquisar produto" aria-label="Recipient's username"
+                                             placeholder="Pesquisar funcionário" aria-label="Recipient's username"
                                              aria-describedby="button-addon2" style="height:32px;">
 
                                          <button class="btn btn-outline-primary" type="submit" id="button-addon2"
@@ -165,7 +165,7 @@
                                                         </li>
                                                     </ul>
                                                 </td>
-                                                
+
                                             </tr>
                                         @endforeach
 

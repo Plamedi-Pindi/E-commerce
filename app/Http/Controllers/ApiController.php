@@ -15,6 +15,7 @@ use App\Models\Endereco;
 use App\Models\Item_pedido;
 use App\Models\Item_venda;
 use App\Models\Venda;
+use App\Models\Estoque;
 
 class ApiController extends Controller
 {
@@ -111,7 +112,6 @@ class ApiController extends Controller
 
             return "Erro";
         }
-
     }
 
 
@@ -132,63 +132,65 @@ class ApiController extends Controller
 
         if (isset($respoonse['status']) && $respoonse['status'] == 'COMPLETED') {
             $carItems = \Cart::getContent();
-            $venda = new Venda;
+            // $venda = new Venda;
             $id_pagamento = $respoonse['id'];
             $pedidos = Pedido::where('id_pagamento', $id_pagamento)->get();
 
-            foreach($pedidos as $pedido){
-                $venda->totla = $pedido->total;
-                $venda->id_user = auth()->user()->id;
-                $venda->ref_pagamento = $id_pagamento;
-                $venda->save();
+            foreach ($pedidos as $pedido) {
+                // $venda->totla = $pedido->total;
+                // $venda->id_user = auth()->user()->id;
+                // $venda->ref_pagamento = $id_pagamento;
+                // $venda->save();
 
                 //Buscar O registro da venda mais recente
-                $vendas = Venda::where('ref_pagamento', $id_pagamento)->get();
-                $itemVenda = new Item_venda;
+                // $vendas = Venda::where('ref_pagamento', $id_pagamento)->get();
+                // $itemVenda = new Item_venda;
 
-                // Preencher a tabela venda
-                foreach($carItems as $item){
+                // // Preencher a tabela venda
+                // foreach ($carItems as $item) {
 
-                    $itemVenda->quantidade = $item->quantity;
-                    $itemVenda->precoUnitario = $item->price;
-                }
+                //     $itemVenda->quantidade = $item->quantity;
+                //     $itemVenda->precoUnitario = $item->price;
+                // } //FOREACH 1.1
 
                 // Passar os dados da tabela itemPedidos para itemVendas
                 $itemPedidos = Item_pedido::where('pedido_id', $pedido->id)->get();
-                foreach($itemPedidos as $itemPedido){
-                    $itemVenda->id_produto = $itemPedido->id_produto;
 
-                    // $produto = Produto::where('id', $itemPedido->id_produto)->get();
-                    // foreach($carItems as $item){
-                    //     $produto->estoque->quantidade = ( $produto->estoque->quantidade - $item->quantity);
+                foreach ($itemPedidos as $itemPedido) {
+                //     $itemVenda->id_produto = $itemPedido->id_produto;
 
-                    // }
-                }
+                    // DESCONTAR O PRODUTO NO ESTOQUE
+                    $estoques = Estoque::where('produto_id', $itemPedido->id_produto)->get();
+
+                    foreach ($carItems as $item) {
+                        foreach($estoques as $estoque){
+                            $estoque->quantidade = ($estoque->quantidade - $item->quantity);
+                            $estoque->update();
+
+                        } // FOREACH 1.2.1.1
+
+                    } //FOREACH 1.2.1
+
+                } // FOREACH 1.2
 
                 // Atualizar a tabela Pedidos
                 $pedido->id_estado = 2;
                 $pedido->update();
 
-                foreach($vendas as $venda){
+                // foreach ($vendas as $venda) {
 
-                    $itemVenda->id_venda = $venda->id;
-                }
-                $itemVenda->save();
+                    // $itemVenda->id_venda = $venda->id;
+                // } // FOREACH 1.3
+
+                // $itemVenda->save();
 
                 // Esvaziar o Carrinho de compra
                 \Cart::clear();
 
+            } //FOREACH 1
 
-            }
-
-
-
-
-        }
+        } // END IF
 
         return redirect()->route('home')->with('success', 'O Pagamento foi efetuado com sucesso!');
-
     }
-
-
 }

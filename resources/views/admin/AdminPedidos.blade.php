@@ -8,7 +8,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">Produtos</h5>
+                    <h5 class="bc-title">Pedidos</h5>
                 </li>
             </ol>
 
@@ -40,13 +40,6 @@
                                             </svg>
                                             Atualizar
                                         </a>
-
-                                        @if (auth()->user()->id_tipo == 1)
-                                        <a class="btn btn-primary btn-sm" href="{{ route('site.produtos.novoProduto') }}">+
-                                            Novo Produto</a>
-                                        <a href="{{ route('site.produtos.novaCategoria') }}"
-                                            class="btn btn-secondary btn-sm"> + Nova Categoria </a>
-                                        @endif
 
                                     </div>
                                 </div>
@@ -91,26 +84,62 @@
                                             <th>Total</th>
                                             <th>Data</th>
                                             <th>Status</th>
+                                            <th>Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($pedidos as $pedido)
-                                            <tr>
-                                                <td>
-                                                    <span class="list-text ">{{ $pedido->id }}</span>
-                                                </td>
-                                                <td><span class="text-primary">{{ $pedido->user->firstName }} {{ $pedido->user->lastName }}</span></td>
-                                                <td>
-                                                    <span class="list-text">{{ number_format($pedido->total, 2, ',', '.') }} Kz</span>
-                                                </td>
-                                                <td>
-                                                    <span class="list-text">{{ $pedido->created_at }}</span>
-                                                </td>
 
-                                                <td>
-                                                    <span class="badge badge-success light border-0">Active</span>
-                                                </td>
-                                            </tr>
+                                            @if (auth()->user()->id == $pedido->user->id && auth()->user()->tipoUsuario->id == 1)
+                                                <tr>
+                                                    <td>
+                                                        <span class="list-text ">{{ $pedido->id }}</span>
+                                                    </td>
+                                                    <td><span class="text-primary">{{ $pedido->user->firstName }}
+                                                            {{ $pedido->user->lastName }}</span></td>
+                                                    <td>
+                                                        <span
+                                                            class="list-text">{{ number_format($pedido->total, 2, ',', '.') }}
+                                                            Kz</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="list-text">{{ $pedido->created_at }}</span>
+                                                    </td>
+
+                                                    <td>
+                                                        @if ($pedido->id_estado == 1)
+                                                            <span class="badge badge-primary light border-0">Pendente</span>
+                                                        @else
+                                                            @if (auth()->user()->id_tipo <= 2)
+                                                                <form action="/entrega/{{ $pedido->id_pagamento }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <input type="hidden" name="total"
+                                                                        value="{{ $pedido->total }}">
+                                                                    <input type="hidden" name="pagamento"
+                                                                        value="{{ $pedido->id_pagamento }}">
+                                                                    <input type="hidden" name="user"
+                                                                        value="{{ $pedido->id_user }}">
+
+                                                                    <button
+                                                                        class="badge badge-success light border-0">Pago</button>
+                                                                </form>
+                                                            @else
+                                                            <button
+                                                            class="badge badge-success light border-0">Pago</button>
+                                                            @endif
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <button class="badge badge-primary light border-0">Detalhes</button>
+                                                        @if (auth()->user()->id == $pedido->user->id)
+                                                            <a href="#"
+                                                                class="badge badge-danger light border-0">Cancelar</a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
 
 

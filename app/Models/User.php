@@ -74,6 +74,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Pedido');
     }
 
+    public function vendas(){
+        return $this->hasMany('App\Models\Venda');
+    }
+
 
     public function tipoUsuario(){
         return $this->belongsTo(Tipo_usuario::class, 'id_tipo');

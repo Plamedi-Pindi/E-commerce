@@ -1,6 +1,6 @@
 @extends('layouts.marge.dashMarge')
 
-@section('title', 'Sumba | Funcionários')
+@section('title', 'Sumba | Cientel')
 
 @section('content')
     <div class="content-body">
@@ -8,7 +8,7 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li>
-                    <h5 class="bc-title">Funcionários</h5>
+                    <h5 class="bc-title">Cientel</h5>
                 </li>
             </ol>
 
@@ -29,7 +29,7 @@
                                      @csrf
                                      <div class="input-group mb-3">
                                          <input type="text" name="busca" class="form-control"
-                                             placeholder="Pesquisar produto" aria-label="Recipient's username"
+                                             placeholder="Pesquisar cliente" aria-label="Recipient's username"
                                              aria-describedby="button-addon2" style="height:32px;">
 
                                          <button class="btn btn-outline-primary" type="submit" id="button-addon2"
@@ -165,7 +165,7 @@
                                                         </li>
                                                     </ul>
                                                 </td>
-                                                
+
                                             </tr>
                                         @endforeach
 

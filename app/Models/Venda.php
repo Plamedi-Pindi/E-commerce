@@ -12,4 +12,9 @@ class Venda extends Model
     public function venda(){
         return $this->hasMany('App\Models\Item_venda');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
 }
