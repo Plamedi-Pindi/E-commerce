@@ -5,6 +5,7 @@ use App\Http\Controllers\apiController;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
@@ -161,4 +162,7 @@ Route::put('/entrega/{id}', [AdminController::class, 'entrega'])->name('admin.en
 
 Route::put('/promocao/{id}', [AdminController::class, 'promocao'])->name('admin.promocao');
 
+// ################ GOOGLE ###################
 
+Route::get('auth/google', [GoogleController::class, 'loginWithGoogle'])->name('google.login');
+Route::any('auth/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
