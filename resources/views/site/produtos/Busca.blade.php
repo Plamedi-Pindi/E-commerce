@@ -20,7 +20,16 @@
                                             data-setbg="/site/img/produtos/{{ $produto->imagem }}">
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="{{ route('shop.shoppingCart') }}"><i class="fa fa-shopping-cart"></i></a></li>
+                                                    <li>
+                                                        <form action="{{ route('shop.addcarrinho') }}" method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="{{ $produto->id }}">
+                                                            <input type="hidden" name="nome" value="{{ $produto->nome }}">
+                                                            <input type="hidden" name="preco" value="{{ $produto->preco }}">
+                                                            <input type="hidden" min="1" name="qtd" value="1">
+                                                            <button type="submit"><i class="fa fa-shopping-cart"></i></button>
+                                                        </form>
+                                                    </li>
                                             </ul>
                                         </div>
                                         <div class="product__item__text">

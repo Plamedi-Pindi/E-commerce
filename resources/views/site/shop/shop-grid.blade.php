@@ -29,25 +29,18 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Department</h4>
+                            <h4>Department</h4> 
                             <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
+                                @foreach ($categoriasMenu as $categoria)
+                                <li><a href="{{ route('Produto.categorias', $categoria->id) }}">{{ $categoria->nome }}</a></li>
+                            @endforeach
                             </ul>
                         </div>
                         <div class="sidebar__item">
-                            <h4>Price</h4>
+                            <h4>Preço</h4>
                             <div class="price-range-wrap">
                                 <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                    data-min="10" data-max="540">
+                                    data-min="500" data-max="5000">
                                     <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                     <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                     <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
@@ -100,7 +93,7 @@
                             </div>
                         </div>
                         <div class="sidebar__item">
-                            <h4>Popular Size</h4>
+                            <h4>Tamanho popular</h4>
                             <div class="sidebar__item__size">
                                 <label for="large">
                                     Large
@@ -149,7 +142,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <span>2500 kz</span>
                                             </div>
                                         </a>
                                         <a href="#" class="latest-product__item">
@@ -158,7 +151,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <span>2500 kz</span>
                                             </div>
                                         </a> --}}
                                     </div>
@@ -169,7 +162,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <span>2500 kz</span>
                                             </div>
                                         </a>
                                         <a href="#" class="latest-product__item">
@@ -178,7 +171,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <span>2500 kz</span>
                                             </div>
                                         </a>
                                         <a href="#" class="latest-product__item">
@@ -187,7 +180,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <span>2500 kz</span>
                                             </div> --}}
                                         {{-- </a> --}}
                                     </div>
@@ -264,7 +257,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -279,7 +272,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -294,7 +287,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +302,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -324,7 +317,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -339,7 +332,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -354,7 +347,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -369,7 +362,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -384,7 +377,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -399,7 +392,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -414,7 +407,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>
@@ -429,7 +422,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5>2500 kz</h5>
                                 </div>
                             </div>
                         </div>

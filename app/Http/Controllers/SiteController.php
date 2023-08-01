@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\Endereco;
+use App\Models\Estoque;
 use App\Models\Item_pedido;
 use App\Models\Pedido;
 use App\Models\Tipo_usuario;
@@ -62,8 +63,27 @@ class SiteController extends Controller
 
     public function checkout(){
         $authUser = auth()->user();
+        $cartAnalise = \Cart::getContent();
 
-        return view('site.cart.checkout', compact('authUser'));
+        foreach($cartAnalise as $item){
+            $productAnalise = Produto::where('id', $item)->get();
+
+            foreach ($productAnalise as $produto) {
+
+                $estoques = Estoque::where('id', $produto->id)->get();
+
+                foreach ($estoques as $estoque) {
+
+                    if($estoque->quantidade > $item->quantity){
+                        return view('site.cart.checkout', compact('authUser'));
+                    }else{
+                       return redirect()->route('shop.shoppingCart')->with('alert', 'A quantidade de '. $produto->nome.' selecionado é maior doque a quantidade disponível no estoque! Estoque: '. $estoque->quantidade. ' Qtd');
+                    }
+                }
+            }
+        }
+
+
     }
 
 
@@ -90,7 +110,7 @@ class SiteController extends Controller
             )
             ]);
 
-        return redirect()->route('Produto.categorias', $request->id)->with('sucesso', 'Produto adicionado ao carrinho!');
+        return back()->with('sucesso', 'Produto adicionado ao carrinho!');
     }
 
 
