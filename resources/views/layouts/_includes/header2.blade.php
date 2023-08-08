@@ -106,7 +106,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route('Admindashboard') }}">Painel de controlo</a></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"></i> Sair   </a></li>
-                                </ul>
+                                </ul> 
                               </div>
 
                             @endauth
