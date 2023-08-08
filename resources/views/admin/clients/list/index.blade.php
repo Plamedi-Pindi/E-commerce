@@ -1,6 +1,7 @@
-@extends('layouts.marge.dashMarge')
+@extends('layouts.marge.dashboard')
 
-@section('title', 'Sumba | Cientel')
+@section('title', 'Sumba | Pedidos')
+
 
 @section('content')
     <div class="content-body">

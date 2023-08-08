@@ -1,4 +1,4 @@
-@extends('layouts.marge.dashMarge')
+@extends('layouts.marge.dashboard')
 
 @section('title', 'Sumba | Pedidos')
 
