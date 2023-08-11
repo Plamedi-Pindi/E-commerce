@@ -226,6 +226,4 @@
 </script>
 </body>
 
-
-<!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Aug 2023 20:55:04 GMT -->
 </html>

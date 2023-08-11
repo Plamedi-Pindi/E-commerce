@@ -15,21 +15,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('firstName')->nullable();
+            $table->string('lastName')->nullable();
             $table->string('email')->unique();
             $table->string('telefone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->unique();;
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('genero')->nullable();
-
             $table->integer('id_endereco')->nullable();
             $table->foreign('id_endereco')->on('enderecos')->references('id')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->integer('id_tipo')->default(3);
+            $table->integer('id_tipo')->default(3)->nullable();
             $table->foreign('id_tipo')->on('tipo_usuarios')->references('id')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

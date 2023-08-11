@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
 use App\Models\Produto;
-use Illuminate\Support\Facades\Http ;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,49 +25,16 @@ use Illuminate\Support\Facades\Http ;
 
 
 // HOME ROUTE
-Route::get('/',[SiteController::class, 'index'])->name('home');
+Route::get('/', [SiteController::class, 'index'])->name('home');
 
 // CHECKOUT
 Route::get('/finalizarcompra', [SiteController::class, 'checkout'])->name('site.carrinho.finalizarcompra')->middleware('auth');
 
 
-// DASHBORAD
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('Admindashboard', function(){
-    return view('dashboard.dashboard');
-})->name('Admindashboard');
-});
+
 
 Route::get('/contatos', [SiteController::class, 'contatos'])->name('site.contatos');
 
-// ROTA PARA O LOGOUT
-Route::get('/logout', [SiteController::class, 'logout'])->name('user.logout');
-
-
-// ROTA PARA A VIEW PRODURO
-Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('adminProduto')->middleware('auth');
-
-// ROTA PARA A VIEW CATEGORIA
-Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('adminCategoria')->middleware('auth');
-
-// ROTA PARA DELEITAR UM PRODUTO
-Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->middleware('auth');
-
-// ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
-Route::get('editarproduto/{id}', [ProdutoController::class, 'edit'])->middleware('auth');
-
-// ROTA PARA ATUALIZAR PRODUTO
-// Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar'])->middleware('auth');
-
-Route::put('/atualizar/{id}', [ProdutoController::class, 'atualizar'])->middleware('auth');
-
-
-// ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
-Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
 
 // ROTA PARA REGISTRAR PRODUTOS
 Route::post('/produtos', [ProdutoController::class, 'store']);
@@ -97,7 +64,7 @@ Route::get('produto/categorias/{id}', [SiteController::class, 'categoria'])->nam
 
 
 // SHOP GROUP
-Route::group(['prefix' => 'compras', 'as' => 'shop.'], function(){
+Route::group(['prefix' => 'compras', 'as' => 'shop.'], function () {
 
     // SHOP ROUTE
     Route::get('/fazercompras', [SiteController::class, 'shop'])->name('shop-grid');
@@ -107,7 +74,6 @@ Route::group(['prefix' => 'compras', 'as' => 'shop.'], function(){
 
     // SHOP DETAILS ROUTE
     Route::get('/detalhesdacompra/{id}', [SiteController::class, 'shopDetail'])->name('shopDetails');
-
 });
 
 
@@ -131,19 +97,10 @@ Route::post('/atualizar', [CarrinhoController::class, 'atualizarCarrinho'])->nam
 Route::get('/limapar', [CarrinhoController::class, 'limparCarrinho'])->name('shop.limparcarrinho');
 
 
-Route::get('/estoque', function(){
+Route::get('/estoque', function () {
     return view('estoque');
 });
 
-
-// Admin control
-Route::get('/pedidos', [SiteController::class, 'adminPedido'])->name('admin.pedidos');
-
-Route::get('/vendas', [SiteController::class, 'vendas'])->name('admin.vendas');
-
-Route::get('/funcionario', [AdminController::class, 'funcionario'])->name('admin.funcionario');
-
-Route::get('/cliente', [AdminController::class, 'cliente'])->name('admin.cliente');
 
 
 
@@ -166,3 +123,7 @@ Route::put('/promocao/{id}', [AdminController::class, 'promocao'])->name('admin.
 
 Route::get('auth/google', [GoogleController::class, 'loginWithGoogle'])->name('google.login');
 Route::any('auth/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+
+/* inclui as rotas de autenticação do ficheiro auth.php */
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
