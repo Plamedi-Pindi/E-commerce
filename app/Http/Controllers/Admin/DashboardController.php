@@ -28,8 +28,8 @@ class DashboardController extends Controller
 
 
     public function products(){
-        $produto = Produto::all();
-        return view('admin.products.products', compact('produto'));
+        $produtos = Produto::all();
+        return view('admin.products.products', compact('produtos'));
     }
 
 
