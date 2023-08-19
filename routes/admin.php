@@ -20,9 +20,10 @@ use App\Http\Middleware\Administrador;
 
 Route::middleware(['auth'])->group(function () {
   /* Manager Dashboard  */
-  Route::get('/admindashboard', ['as' => 'Admindashboard', 'uses' => 'Admin\DashboardController@index']);
+  Route::get('/Admindashboard', ['as' => 'Admindashboard', 'uses' => 'Admin\DashboardController@index']);
 
-
+    // PRODUCT MANAGER
+  Route::get('/Admindashboard/produtos', ['as' => 'admin.products', 'uses' => 'Admin\DashboardController@products']);
 
   /** pedidos*/
 
@@ -36,18 +37,18 @@ Route::middleware(['auth'])->group(function () {
 
 
 // ROTA PARA A VIEW PRODURO
-Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('adminProduto');
+// Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('adminProduto');
 
-// ROTA PARA A VIEW CATEGORIA
-Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('adminCategoria');
-// ROTA PARA DELEITAR UM PRODUTO
-Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy']);
-// ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
-Route::get('editarproduto/{id}', [ProdutoController::class, 'edit']);
-// ROTA PARA ATUALIZAR PRODUTO
-// Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar']);
-Route::put('/atualizar/{id}', [ProdutoController::class, 'atualizar']);
+// // ROTA PARA A VIEW CATEGORIA
+// Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('adminCategoria');
+// // ROTA PARA DELEITAR UM PRODUTO
+// Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy']);
+// // ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
+// Route::get('editarproduto/{id}', [ProdutoController::class, 'edit']);
+// // ROTA PARA ATUALIZAR PRODUTO
+// // Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar']);
+// Route::put('/atualizar/{id}', [ProdutoController::class, 'atualizar']);
 
-// ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
-Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
+// // ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
+// Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
 });

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Schedule;
 use App\Models\Gallery;
 use App\Models\Log;
+use App\Models\Produto;
 use App\Models\Signup;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-    
         return view('admin.home.index');
     }
+
+
+    public function products(){
+        $produto = Produto::all();
+        return view('admin.products.products', compact('produto'));
+    }
+
+
+
 }

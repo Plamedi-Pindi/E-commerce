@@ -80,7 +80,7 @@
                         <div class="menu-title">Produtos</div>
                     </a>
                     <ul>
-                        <li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>Products</a>
+                        <li> <a href="{{ route('admin.products') }}"><i class='bx bx-radio-circle'></i>Products</a>
                         </li>
                         <li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>Product
                                 Details</a>
@@ -142,42 +142,42 @@
                             </li>
                             <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;"
-                                    data-bs-toggle="dropdown"><img src="dashboard2/assets/images/county/02.png"
+                                    data-bs-toggle="dropdown"><img src="/dashboard2/assets/images/county/02.png"
                                         width="22" alt="">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/01.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/01.png"
                                                 width="20" alt=""><span class="ms-2">English</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/02.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/02.png"
                                                 width="20" alt=""><span class="ms-2">Catalan</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/03.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/03.png"
                                                 width="20" alt=""><span class="ms-2">French</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/04.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/04.png"
                                                 width="20" alt=""><span class="ms-2">Belize</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/05.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/05.png"
                                                 width="20" alt=""><span
                                                 class="ms-2">Colombia</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/06.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/06.png"
                                                 width="20" alt=""><span class="ms-2">Spanish</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/07.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/07.png"
                                                 width="20" alt=""><span
                                                 class="ms-2">Georgian</span></a>
                                     </li>
                                     <li><a class="dropdown-item d-flex align-items-center py-2"
-                                            href="javascript:;"><img src="dashboard2/assets/images/county/08.png"
+                                            href="javascript:;"><img src="/dashboard2/assets/images/county/08.png"
                                                 width="20" alt=""><span class="ms-2">Hindi</span></a>
                                     </li>
                                 </ul>
@@ -197,7 +197,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/slack.png"
+                                                            <img src="/dashboard2/assets/images/app/slack.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -210,7 +210,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/behance.png"
+                                                            <img src="/dashboard2/assets/images/app/behance.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -223,7 +223,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/google-drive.png"
+                                                            <img src="/dashboard2/assets/images/app/google-drive.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -236,7 +236,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/outlook.png"
+                                                            <img src="/dashboard2/assets/images/app/outlook.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -249,7 +249,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/github.png"
+                                                            <img src="/dashboard2/assets/images/app/github.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -262,7 +262,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/stack-overflow.png"
+                                                            <img src="/dashboard2/assets/images/app/stack-overflow.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -275,7 +275,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/figma.png"
+                                                            <img src="/dashboard2/assets/images/app/figma.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -288,7 +288,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/twitter.png"
+                                                            <img src="/dashboard2/assets/images/app/twitter.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -301,7 +301,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/google-calendar.png"
+                                                            <img src="/dashboard2/assets/images/app/google-calendar.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -314,7 +314,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/spotify.png"
+                                                            <img src="/dashboard2/assets/images/app/spotify.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -327,7 +327,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/google-photos.png"
+                                                            <img src="/dashboard2/assets/images/app/google-photos.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -340,7 +340,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/pinterest.png"
+                                                            <img src="/dashboard2/assets/images/app/pinterest.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -353,7 +353,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/linkedin.png"
+                                                            <img src="/dashboard2/assets/images/app/linkedin.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -366,7 +366,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/dribble.png"
+                                                            <img src="/dashboard2/assets/images/app/dribble.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -379,7 +379,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/youtube.png"
+                                                            <img src="/dashboard2/assets/images/app/youtube.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -392,7 +392,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/google.png"
+                                                            <img src="/dashboard2/assets/images/app/google.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -405,7 +405,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/envato.png"
+                                                            <img src="/dashboard2/assets/images/app/envato.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -418,7 +418,7 @@
                                                 <a href="javascript:;">
                                                     <div class="app-box text-center">
                                                         <div class="app-icon">
-                                                            <img src="dashboard2/assets/images/app/safari.png"
+                                                            <img src="/dashboard2/assets/images/app/safari.png"
                                                                 width="30" alt="">
                                                         </div>
                                                         <div class="app-name">
@@ -450,7 +450,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="dashboard2/assets/images/avatars/avatar-1.png"
+                                                    <img src="/dashboard2/assets/images/avatars/avatar-1.png"
                                                         class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -476,7 +476,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="dashboard2/assets/images/avatars/avatar-2.png"
+                                                    <img src="/dashboard2/assets/images/avatars/avatar-2.png"
                                                         class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -490,7 +490,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="notify bg-light-success text-success">
-                                                    <img src="dashboard2/assets/images/app/outlook.png" width="25"
+                                                    <img src="/dashboard2/assets/images/app/outlook.png" width="25"
                                                         alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -515,7 +515,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="dashboard2/assets/images/avatars/avatar-4.png"
+                                                    <img src="/dashboard2/assets/images/avatars/avatar-4.png"
                                                         class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -542,7 +542,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="notify bg-light-primary">
-                                                    <img src="dashboard2/assets/images/app/github.png" width="25"
+                                                    <img src="/dashboard2/assets/images/app/github.png" width="25"
                                                         alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -556,7 +556,7 @@
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="dashboard2/assets/images/avatars/avatar-8.png"
+                                                    <img src="/dashboard2/assets/images/avatars/avatar-8.png"
                                                         class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -593,7 +593,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/11.png"
+                                                        <img src="/dashboard2/assets/images/products/11.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -612,7 +612,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/02.png"
+                                                        <img src="/dashboard2/assets/images/products/02.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -631,7 +631,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/03.png"
+                                                        <img src="/dashboard2/assets/images/products/03.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -650,7 +650,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/04.png"
+                                                        <img src="/dashboard2/assets/images/products/04.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -669,7 +669,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/05.png"
+                                                        <img src="/dashboard2/assets/images/products/05.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -688,7 +688,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/06.png"
+                                                        <img src="/dashboard2/assets/images/products/06.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -707,7 +707,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/07.png"
+                                                        <img src="/dashboard2/assets/images/products/07.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -726,7 +726,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/08.png"
+                                                        <img src="/dashboard2/assets/images/products/08.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -745,7 +745,7 @@
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="position-relative">
                                                     <div class="cart-product rounded-circle bg-light">
-                                                        <img src="dashboard2/assets/images/products/09.png"
+                                                        <img src="/dashboard2/assets/images/products/09.png"
                                                             class="" alt="product image">
                                                     </div>
                                                 </div>
@@ -777,7 +777,7 @@
                     <div class="user-box dropdown px-3">
                         <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="dashboard2/assets/images/avatars/avatar-2.png" class="user-img"
+                            <img src="/dashboard2/assets/images/avatars/avatar-2.png" class="user-img"
                                 alt="user avatar">
                             <div class="user-info">
                                 <p class="user-name mb-0">Pauline Seitz</p>

@@ -88,8 +88,8 @@
             <div class="col-lg-5">
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li class="active"><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
+                        <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                        <li ><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
                         <li><a href="{{ route('site.contatos') }}">Contatatos</a></li>
                     </ul>
                 </nav>
