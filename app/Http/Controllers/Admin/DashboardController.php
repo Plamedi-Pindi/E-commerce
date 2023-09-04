@@ -32,6 +32,14 @@ class DashboardController extends Controller
         return view('admin.products.products', compact('produtos'));
     }
 
+    public function newProduct(){
+        return view("admin.products.newProduct");
+    }
+
+    public function productDetails($id){
+        $produtos = Produto::findOrFail($id);
+        return view("admin.products.productDetails", compact('produtos'));
+    }
 
 
 }

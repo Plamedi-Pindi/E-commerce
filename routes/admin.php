@@ -34,7 +34,12 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/cliente', [AdminController::class, 'cliente'])->name('admin.cliente');
 
 
+/*  NEW PRODUCT */
 
+Route::get('/Admindashboard/novoproduto', ['as' => 'admin.newproduct', 'uses' => 'Admin\DashboardController@newProduct']);
+
+/* PRODUCT DETAILS*/
+Route::get('/Admindasboard/detalhes/{id}', ['as' => 'adimn.productdetails', 'uses' => 'Admin\DashboardController@productDetails']);
 
 // ROTA PARA A VIEW PRODURO
 // Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('adminProduto');

@@ -125,10 +125,10 @@
     <!-- Featured Section End -->
 
     <!-- Banner Begin -->
-    <div class="Intervalo">
+    {{-- <div class="Intervalo">
 
         </div>
-    </div>
+    </div> --}}
     <!-- Banner End -->
 
     <!-- Latest Product Section Begin -->
@@ -140,17 +140,17 @@
                         <h4>Produtos Mais recentes</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
-                                @foreach ($va as $va)
+                                {{-- @foreach ($va as $va) --}}
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="{{ $va->imagem }}" alt="">
+                                        {{-- <img src="{{ $va->imagem }}" alt=""> --}}
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
                                         <span>$30.00</span>
                                     </div>
                                 </a>
-                                @endforeach
+                                {{-- @endforeach --}}
                             </div>
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">

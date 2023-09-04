@@ -13,6 +13,7 @@
     <link href="/dashboard2/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="/dashboard2/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="/dashboard2/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    
     <!-- loader-->
     <link href="/dashboard2/assets/css/pace.min.css" rel="stylesheet" />
     <script src="/dashboard2/assets/js/pace.min.js"></script>
