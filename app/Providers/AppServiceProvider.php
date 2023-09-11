@@ -32,26 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(100);
 
-        // MÉTODO GLOBAL PARA AS CATEGORIAS DOS PRODUTOS
-
-        $categoriasMenu = Categoria::all();
-        view()->share('categoriasMenu', $categoriasMenu);
-
-        // METODO PARA BUSCAS
-        $busca = request('busca');
-        $buscarProdutos = Produto::where([
-            ['nome', 'like', '%'.$busca.'%']
-        ])->get();
-        view()->share(['buscarProdutos' => $buscarProdutos, 'busca'=> $busca]);
-
-
-        // METODO PARA O CARRINHO
-        $items = \Cart::getContent();
-        view()->share('items', $items);
-
-
-        $estoque = Estoque::all();
-        view()->share('estoque', $estoque);
+        
 
 
     }
