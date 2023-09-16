@@ -7,10 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Endereco extends Model
 {
-
     use HasFactory;
-
-    public function user(){
-        return $this->hasOne('App\Models\User');
-    }
 }

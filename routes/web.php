@@ -25,20 +25,14 @@ use Illuminate\Support\Facades\Http;
 
 
 // HOME ROUTE
-Route::get('/', [SiteController::class, 'index'])->name('home');
+Route::get('/', 'Site\HomeController@index')->name('site.home');
+Route::get('/contatos', 'Site\ContactController@index')->name('site.contatos');
 
 // CHECKOUT
 Route::get('/finalizarcompra', [SiteController::class, 'checkout'])->name('site.carrinho.finalizarcompra')->middleware('auth');
 
-
-
-
-Route::get('/contatos', [SiteController::class, 'contatos'])->name('site.contatos');
-
-
 // ROTA PARA REGISTRAR PRODUTOS
 Route::post('/produtos', [ProdutoController::class, 'store']);
-
 // ROTA PARA VIEW DE PESQUISAR DE PRODUTO
 Route::get('pesquisarProdutos', [SiteController::class, 'pesquisarProduto'])->name('pesquisarProduto');
 

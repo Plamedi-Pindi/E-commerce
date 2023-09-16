@@ -4,22 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pedido extends Model
 {
-    use HasFactory;
-    protected $primaryKey = 'id';
-    protected $fillable = ['id_user'];
+    use HasFactory, SoftDeletes;
 
-    public function itemPedido(){
-        return $this->hasMany('App\Models\Item_pedido');
-    }
-
-    public function user(){
-        return $this->belongsTo(User::class, 'id_user');
-    }
-
-    public function estado(){
-        return $this->belongsTo(EstadoPedido::class, 'id_estado');
-    }
+    protected $table = 'pedidos';
+    protected $guarded = ['id'];
+    protected $dates = ['deleted_at'];
 }
