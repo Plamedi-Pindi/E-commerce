@@ -14,17 +14,12 @@ class CreateEstoquesTable extends Migration
     public function up()
     {
         Schema::create('estoques', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->id();
             $table->integer('quantidade');
-            $table->integer('limite_max')->nullable();
             $table->integer('limite_min');
-
-            $table->integer('produto_id');
-            $table->foreign('produto_id')->on('produtos')->references('id')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->foreignId('produto_id')->constrained('produtos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -37,6 +32,5 @@ class CreateEstoquesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('estoques');
-        
     }
 }

@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\Editor;
-use App\Http\Middleware\Administrador;
+
 
 
 /*
@@ -19,41 +18,49 @@ use App\Http\Middleware\Administrador;
 /* Grupo de Rotas Autenticadas */
 
 Route::middleware(['auth'])->group(function () {
-  /* Manager Dashboard  */
-  Route::get('/Admindashboard', ['as' => 'Admindashboard', 'uses' => 'Admin\DashboardController@index']);
+    /* Manager Dashboard  */
 
-    // PRODUCT MANAGER
-  Route::get('/Admindashboard/produtos', ['as' => 'admin.products', 'uses' => 'Admin\DashboardController@products']);
-
-  /** pedidos*/
-
-  /**end pedidos */
-  Route::get('/pedidos', [SiteController::class, 'adminPedido'])->name('admin.pedidos');
-  Route::get('/vendas', [SiteController::class, 'vendas'])->name('admin.vendas');
-  Route::get('/funcionario', [AdminController::class, 'funcionario'])->name('admin.funcionario');
-  Route::get('/cliente', [AdminController::class, 'cliente'])->name('admin.cliente');
+    /* course */
+    Route::get('/admin/painel', ['as' => 'admin.home', 'uses' => 'Admin\DashboardController@index']);
 
 
-/*  NEW PRODUCT */
 
-Route::get('/Admindashboard/novoproduto', ['as' => 'admin.newproduct', 'uses' => 'Admin\DashboardController@newProduct']);
+    /* produtos */
+    Route::get('admin/produtos/index', ['as' => 'admin.produtos.index', 'uses' => 'Admin\ProdutosController@index']);
+    Route::get('admin/produtos/show/{id}', ['as' => 'admin.produtos.show', 'uses' => 'Admin\ProdutosController@show']);
+    Route::get('admin/produtos/create', ['as' => 'admin.produtos.create', 'uses' => 'Admin\ProdutosController@create']);
+    Route::get('admin/produtos/edit/{id}', ['as' => 'admin.produtos.edit', 'uses' => 'Admin\ProdutosController@edit']);;
+    Route::post('admin/produtos/store', ['as' => 'admin.produtos.store', 'uses' => 'Admin\ProdutosController@store']);;
+    Route::put('admin/produtos/update/{id}', ['as' => 'admin.produtos.update', 'uses' => 'Admin\ProdutosController@update']);
+    Route::get('admin/produtos/delete/{id}', ['as' => 'admin.produtos.delete', 'uses' => 'Admin\ProdutosController@destroy']);
+    /* end produtos */
 
-/* PRODUCT DETAILS*/
-Route::get('/Admindasboard/detalhes/{id}', ['as' => 'adimn.productdetails', 'uses' => 'Admin\DashboardController@productDetails']);
+    /* pedidos */
+    Route::get('admin/pedidos/index', ['as' => 'admin.pedidos.index', 'uses' => 'Admin\PedidoController@index']);
+    Route::get('admin/pedidos/show/{id}', ['as' => 'admin.pedidos.show', 'uses' => 'Admin\PedidoController@show']);
+    Route::get('admin/pedidos/create', ['as' => 'admin.pedidos.create', 'uses' => 'Admin\PedidoController@create']);
+    Route::get('admin/pedidos/edit/{id}', ['as' => 'admin.pedidos.edit', 'uses' => 'Admin\PedidoController@edit']);;
+    Route::post('admin/pedidos/store', ['as' => 'admin.pedidos.store', 'uses' => 'Admin\PedidoController@store']);;
+    Route::put('admin/pedidos/update/{id}', ['as' => 'admin.pedidos.update', 'uses' => 'Admin\PedidoController@update']);
+    Route::get('admin/pedidos/delete/{id}', ['as' => 'admin.pedidos.delete', 'uses' => 'Admin\PedidoController@destroy']);
+    /* end pedidos */
 
-// ROTA PARA A VIEW PRODURO
-// Route::get('Admindashboard/produtos', [ProdutoController::class, 'index'])->name('adminProduto');
+       /* categoria */
+       Route::get('admin/categorias/index', ['as' => 'admin.categorias.index', 'uses' => 'Admin\CategoriaController@index']);
+       Route::get('admin/categorias/show/{id}', ['as' => 'admin.categorias.show', 'uses' => 'Admin\CategoriaController@show']);
+       Route::get('admin/categorias/create', ['as' => 'admin.categorias.create', 'uses' => 'Admin\CategoriaController@create']);
+       Route::get('admin/categorias/edit/{id}', ['as' => 'admin.categorias.edit', 'uses' => 'Admin\CategoriaController@edit']);;
+       Route::post('admin/categorias/store', ['as' => 'admin.categorias.store', 'uses' => 'Admin\CategoriaController@store']);;
+       Route::put('admin/categorias/update/{id}', ['as' => 'admin.categorias.update', 'uses' => 'Admin\CategoriaController@update']);
+       Route::get('admin/categorias/delete/{id}', ['as' => 'admin.categorias.delete', 'uses' => 'Admin\CategoriaController@destroy']);
+       /* end categoria */
 
-// // ROTA PARA A VIEW CATEGORIA
-// Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('adminCategoria');
-// // ROTA PARA DELEITAR UM PRODUTO
-// Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy']);
-// // ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
-// Route::get('editarproduto/{id}', [ProdutoController::class, 'edit']);
-// // ROTA PARA ATUALIZAR PRODUTO
-// // Route::put('atualizar/{id}', [ProdutoController::class, 'atualizar']);
-// Route::put('/atualizar/{id}', [ProdutoController::class, 'atualizar']);
 
-// // ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
-// Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
+    /* User */
+    Route::get('admin/utilizadores/index', ['as' => 'admin.user.index', 'uses' => 'Admin\UserController@index']);
+    Route::get('admin/utilizadores/show/{id}', ['as' => 'admin.user.show', 'uses' => 'Admin\UserController@show'])->withoutMiddleware('administrador');
+    Route::get('admin/utilizadores/edit/{id}', ['as' => 'admin.user.edit', 'uses' => 'Admin\UserController@edit'])->withoutMiddleware('administrador');
+    Route::put('admin/utilizadores/update/{id}', ['as' => 'admin.user.update', 'uses' => 'Admin\UserController@update'])->withoutMiddleware('administrador');
+    Route::get('admin/utilizadores/delete/{id}', ['as' => 'admin.user.delete', 'uses' => 'Admin\UserController@destroy']);
+    /* end user */
 });

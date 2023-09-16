@@ -14,23 +14,17 @@ class Produtos extends Migration
     public function up()
     {
         Schema::create('produtos', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->id();
             $table->string('nome');
-            $table->double('preco',10.2);
-            $table->text('descricao');
+            $table->string('preco');
+            $table->longText('descricao');
             $table->string('imagem');
             $table->date('validade');
             $table->float('peso');
-
-
-            $table->integer('id_categoria');
-            $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->integer('estado_id');
-            $table->foreign('estado_id')->references('id')->on('estado_produtos')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->string('status');
+            $table->foreignId('id_categoria')->constrained('categorias')->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
 

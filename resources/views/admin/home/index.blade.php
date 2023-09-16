@@ -1,5 +1,4 @@
-@extends('layouts.marge.dashboard')
-
+@extends('layouts.marge.admin')
 @section('content')
     <div class="page-content">
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
@@ -9,8 +8,8 @@
                         <div class="d-flex align-items-center">
                             <div>
                                 <p class="mb-0 text-secondary">Total de Pedidos</p>
-                                <h4 class="my-1 text-info">4805</h4>
-                                <p class="mb-0 font-13">+2.5% da semana passada</p>
+                                <h4 class="my-1 text-info">{{ $pedidos }}</h4>
+                                <p class="mb-0 font-13">{{ $mensagemPedido }}</p>
                             </div>
                             <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i
                                     class='bx bxs-cart'></i>
@@ -26,8 +25,8 @@
                             <div>
                                 <p class="mb-0 text-secondary">
                                     Rendimento total</p>
-                                <h4 class="my-1 text-danger">$84,245</h4>
-                                <p class="mb-0 font-13">+5.4% da semana passada</p>
+                                <h4 class="my-1 text-danger">{{ number_format($rendimento, 2, ',', '.') }} kz </h4>
+                                <p class="mb-0 font-13">{{ $mensagem }}</p>
                             </div>
                             <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i
                                     class='bx bxs-wallet'></i>
@@ -43,8 +42,8 @@
                             <div>
                                 <p class="mb-0 text-secondary">
                                     Taxa de rejeição</p>
-                                <h4 class="my-1 text-success">34.6%</h4>
-                                <p class="mb-0 font-13">-4.5% da semana passada</p>
+                                <h4 class="my-1 text-success">{{ $cancelado/100 }}%</h4>
+                                <p class="mb-0 font-13">{{ $mensagemCancelado }}%</p>
                             </div>
                             <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i
                                     class='bx bxs-bar-chart-alt-2'></i>
@@ -60,8 +59,8 @@
                             <div>
                                 <p class="mb-0 text-secondary">
                                     Total de clientes</p>
-                                <h4 class="my-1 text-warning">8.4K</h4>
-                                <p class="mb-0 font-13">+8.4% da semana passada</p>
+                                <h4 class="my-1 text-warning">{{ $clientes }}K</h4>
+                                <p class="mb-0 font-13">{{ $mensagemClientes }}</p>
                             </div>
                             <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i
                                     class='bx bxs-group'></i>
@@ -85,17 +84,7 @@
                                     data-bs-toggle="dropdown"><i
                                         class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
                     </div>
@@ -107,7 +96,7 @@
                                     style="color: #ffc107"></i>Visits</span>
                         </div>
                         <div class="chart-container-1">
-                            <canvas id="chart1"></canvas>
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
                     <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
@@ -443,4 +432,48 @@
         </div><!--end row-->
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    "Janeiro",
+                    "Fevereiro",
+                    "Março",
+                    "Abril",
+                    "Maio",
+                    "Junho",
+                    "Julho",
+                    "Agosto",
+                    "Setembro",
+                    "Outubro",
+                    "Novembro",
+                    "Dezembro"
+                ],
+                datasets: [{
+                        label: "pendente",
+                        data: [
+                            2655, 5, 22, 5,
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: "aprovados",
+                        data: [
+                            5, 54, 51, 2, 451, 51, 1
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
