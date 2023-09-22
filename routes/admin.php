@@ -47,7 +47,7 @@ Route::get('/Admindasboard/detalhes/{id}', ['as' => 'adimn.productdetails', 'use
 // // ROTA PARA A VIEW CATEGORIA
 // Route::get('Admindashboard/categorias', [CategoriaController::class, 'index'])->name('adminCategoria');
 // // ROTA PARA DELEITAR UM PRODUTO
-// Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy']);
+Route::delete('deletarproduto/{id}', [ProdutoController::class, 'destroy'])->name("product.delete");
 // // ROTA PARA  ACESSAR A VIEW DE EDITAR PRODUTO
 // Route::get('editarproduto/{id}', [ProdutoController::class, 'edit']);
 // // ROTA PARA ATUALIZAR PRODUTO
@@ -57,3 +57,4 @@ Route::get('/Admindasboard/detalhes/{id}', ['as' => 'adimn.productdetails', 'use
 // // ROTA PARA ACESSAR A VIEW DE REGISTRAR PRODUTOS
 // Route::get('/novoproduto', [ProdutoController::class, 'novoProduto'])->name('site.produtos.novoProduto');
 });
+
