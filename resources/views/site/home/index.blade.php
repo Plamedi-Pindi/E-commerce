@@ -1,4 +1,4 @@
-@extends('layouts.marge.SiteHome')
+{{-- @extends('layouts.marge.SiteHome') --}}
 
 @section('content')
 

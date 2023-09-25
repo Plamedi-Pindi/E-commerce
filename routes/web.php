@@ -9,6 +9,7 @@ use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Site\HomeController;
 use App\Models\Produto;
 use Illuminate\Support\Facades\Http;
 
@@ -25,7 +26,10 @@ use Illuminate\Support\Facades\Http;
 
 
 // HOME ROUTE
-Route::get('/', 'Site\HomeController@index')->name('site.home');
+Route::get('/', [HomeController::class, 'index'])->name('site.home');
+
+
+
 Route::get('/contatos', 'Site\ContactController@index')->name('site.contatos');
 
 // CHECKOUT
