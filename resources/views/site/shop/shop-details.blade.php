@@ -1,6 +1,6 @@
-@extends('layouts.marge.site2')
+@extends('layouts.marge.site')
 
-@section('title', 'Detalhes da Compra')
+@section('title', 'SUMBA | Detalhes')
 
 @section('content')
 

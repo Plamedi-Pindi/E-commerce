@@ -1,6 +1,6 @@
 @extends('layouts.marge.SiteHome')
 
-@section('title', 'Sumba | home')
+@section('title', 'SUMBA | home')
 
 @section('content')
 
@@ -15,10 +15,10 @@
                             <span>Todas categorias</span>
                         </div>
                         <ul>
-                            {{-- @foreach ($categoriasMenu as $categoria)
+                            @foreach ($categoriasMenu as $categoria)
                                 <li><a href="{{ route('Produto.categorias', $categoria->id) }}">{{ $categoria->nome }}</a></li>
 
-                            @endforeach --}}
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                             <span>FRUTA FRESCA</span>
                             <h2>Vegetal <br />100% Orgânico</h2>
                             <p>Aqui você encontra os melhores produtos</p>
-                            <a href="{{ route('shop.shop-grid') }}" class="primary-btn">FAÇA COMPRAS</a>
+                            <a href="{{ route('shop.grid') }}" class="primary-btn">FAÇA COMPRAS</a>
                         </div>
                     </div>
                 </div>
@@ -61,13 +61,13 @@
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
-                    {{-- @foreach ($estante as $estante)
+                    @foreach ($estantes as $estante)
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="site/img/produtos/{{ $estante->imagem }}">
                             <h5><a href="#">{{ $estante->nome }}</a></h5>
                         </div>
                     </div>
-                    @endforeach --}}
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="row featured__filter">
-                {{-- @foreach ($produtos as $produto)
+                @foreach ($produtos as $produto)
                     <div class="col-lg-3 col-md-4 col-sm-6 mix {{ $produto->categoria->nome }} fresh-meat">
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" data-setbg="/site/img/produtos/{{ $produto->imagem }}">
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
 
             </div>
         </div>
@@ -416,3 +416,4 @@
 
 
 @endsection
+

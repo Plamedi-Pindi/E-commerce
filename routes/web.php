@@ -8,8 +8,11 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\site\CartController;
+use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\site\ShopController;
 use App\Models\Produto;
 use Illuminate\Support\Facades\Http;
 
@@ -25,15 +28,43 @@ use Illuminate\Support\Facades\Http;
 */
 
 
-// HOME ROUTE
+/****************  HOME ROUTE  ********************/
 Route::get('/', [HomeController::class, 'index'])->name('site.home');
 
 
+/****************  SHOP GROUP  ********************/
+Route::group(['prefix' => 'compras', 'as' => 'shop.'], function () {
 
-Route::get('/contatos', 'Site\ContactController@index')->name('site.contatos');
+    /** GRID **/
+    Route::get('/', [ShopController::class, 'index'])->name('grid');
+
+    /** DATAILS **/
+    Route::get('/detalhes/{id}', [ShopController::class, 'show'])->name('details');
+
+    /** Cart **/
+    Route::get('/Carrinho', [ShopController::class, 'cart'])->name('cart');
+
+});
+
+/****************  FINALIZAR COMPRA ********************/
+Route::get('/formularioDeCompra', [CartController::class, 'index'])->name('site.checkout');
+
+/****************  CONTACTS  ********************/
+Route::get('/contatos', [ContactController::class, 'index'])->name('site.contacts');
+
+
+/****************  CATEGORIAS ********************/
+Route::get('/contatos', [CategoriaController::class, 'show'])->name('site.contacts');
+
+
+
+
+
+
+
 
 // CHECKOUT
-Route::get('/finalizarcompra', [SiteController::class, 'checkout'])->name('site.carrinho.finalizarcompra')->middleware('auth');
+// Route::get('/finalizarcompra', [SiteController::class, 'checkout'])->name('site.carrinho.finalizarcompra')->middleware('auth');
 
 // ROTA PARA REGISTRAR PRODUTOS
 Route::post('/produtos', [ProdutoController::class, 'store']);
@@ -61,18 +92,6 @@ Route::get('produto/categorias/{id}', [SiteController::class, 'categoria'])->nam
 
 
 
-// SHOP GROUP
-Route::group(['prefix' => 'compras', 'as' => 'shop.'], function () {
-
-    // SHOP ROUTE
-    Route::get('/fazercompras', [SiteController::class, 'shop'])->name('shop-grid');
-
-    // SHOPPPING CART ROUTE
-    // Route::get('/carrinhodecompras', [SiteController::class, 'shoppingCart'])->name('shoppingCart');
-
-    // SHOP DETAILS ROUTE
-    Route::get('/detalhesdacompra/{id}', [SiteController::class, 'shopDetail'])->name('shopDetails');
-});
 
 
 

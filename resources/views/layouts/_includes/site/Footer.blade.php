@@ -6,7 +6,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo ">
-                        <a href="{{ route('home') }}"><img src="/site/img/icon.png" alt=""><h2>Su<span>m</span>ba</h2></a>
+                        <a href="{{ route('site.home') }}"><img src="/site/img/icon.png" alt=""><h2>Su<span>m</span>ba</h2></a>
                     </div>
                     <ul>
                         <li>Endereço: 60-49 Mutamba</li>
@@ -19,8 +19,8 @@
                 <div class="footer__widget footer_menu">
                     <h6>Menu</h6>
                     <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('shop.shop-grid') }}">Loja</a></li>
+                        <li><a href="{{ route('site.home') }}">Home</a></li>
+                        <li><a href="{{ route('shop.grid') }}">Loja</a></li>
                         <li><a href="#">contatos</a></li>
 
                     </ul>

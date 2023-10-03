@@ -1,8 +1,8 @@
-@extends('layouts.marge.site2')
+@extends('layouts.marge.site')
 
-@section('title', 'Fechar a Conta')
+@section('title', 'SUMBA | Formulário de compra')
 
-@section('content')
+{{-- @section('content')
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="/site/img/breadcrumb.jpg">
         <div class="container">
@@ -105,4 +105,4 @@
     </section>
     <!-- Checkout Section End -->
 
-@endsection
+@endsection --}}

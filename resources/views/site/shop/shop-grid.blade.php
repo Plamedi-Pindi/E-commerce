@@ -1,6 +1,6 @@
-@extends('layouts.marge.site2')
+@extends('layouts.marge.site')
 
-@section('title', 'Fazer Compras')
+@section('title', 'SUMBA | Loja')
 
 @section('content')
 
@@ -29,11 +29,13 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Department</h4> 
+                            <h4>Department</h4>
                             <ul>
-                                @foreach ($categoriasMenu as $categoria)
-                                <li><a href="{{ route('Produto.categorias', $categoria->id) }}">{{ $categoria->nome }}</a></li>
-                            @endforeach
+                                {{-- @foreach ($categoriasMenu as $categoria)
+                                    <li><a
+                                            href="{{ route('Produto.categorias', $categoria->id) }}">{{ $categoria->nome }}</a>
+                                    </li>
+                                @endforeach --}}
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -124,18 +126,17 @@
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
                                     <div class="latest-prdouct__slider__item">
-                                        @foreach ($produtos as $produto)
-
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="/site/img/produtos/{{ $produto->imagem }}" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>{{ $produto->nome }}</h6>
-                                                <span>{{ number_format($produto->preco, 2, ',', '.') }} Kz</span>
-                                            </div>
-                                        </a>
-                                        @endforeach
+                                        {{-- @foreach ($produtos as $produto)
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="/site/img/produtos/{{ $produto->imagem }}" alt="">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <h6>{{ $produto->nome }}</h6>
+                                                    <span>{{ number_format($produto->preco, 2, ',', '.') }} Kz</span>
+                                                </div>
+                                            </a>
+                                        @endforeach --}}
                                         {{-- <a href="#" class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="/site/img/latest-product/lp-2.jpg" alt="">
@@ -197,26 +198,30 @@
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
 
-                                @foreach ($produtos as $produto)
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg">
-                                            <img src="/site/img/produtos/{{ $produto->imagem }}" alt="Imagem do produto">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                {{-- <li><a href="#"><i class="fa fa-heart"></i></a></li> --}}
-                                                <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i class="fa fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>{{ $produto->categoria->nome }}</span>
-                                            <h5><a href="#">{{ $produto->nome }}</a></h5>
-                                            <div class="product__item__price">{{ number_format($produto->preco, 2, ',', '.') }} Kz<span>36.00Kz</span></div>
+                                {{-- @foreach ($produtos as $produto)
+                                    <div class="col-lg-4">
+                                        <div class="product__discount__item">
+                                            <div class="product__discount__item__pic set-bg">
+                                                <img src="/site/img/produtos/{{ $produto->imagem }}"
+                                                    alt="Imagem do produto">
+                                                <div class="product__discount__percent">-20%</div>
+                                                <ul class="product__item__pic__hover">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="{{ route('shop.shopDetails', $produto->id) }}"><i
+                                                                class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product__discount__item__text">
+                                                <span>{{ $produto->categoria->nome }}</span>
+                                                <h5><a href="#">{{ $produto->nome }}</a></h5>
+                                                <div class="product__item__price">
+                                                    {{ number_format($produto->preco, 2, ',', '.') }} Kz<span>36.00Kz</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                @endforeach --}}
 
                             </div>
                         </div>
